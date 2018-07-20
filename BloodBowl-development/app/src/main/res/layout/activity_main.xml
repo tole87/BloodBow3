@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/centro">
+
+
+    <Button
+        android:id="@+id/equipo_menu"
+        style="@style/Boton_Menu"
+        android:text="@string/equipos"
+        android:onClick="abrirMenuEquipos"/>
+
+    <Button
+        android:id="@+id/Torneo"
+        style="@style/Boton_Menu"
+        android:text="@string/torneo"/>
+
+</LinearLayout>

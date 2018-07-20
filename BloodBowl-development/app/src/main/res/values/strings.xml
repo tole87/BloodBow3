@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">BludBuwl</string>
+    <string name="equipos">Equipos</string>
+    <string name="crea_tu_equipo">Crea tu equipo</string>
+    <string name="tus_equipos">Tus equipos</string>
+    <string name="guia_equipos">Guia equipos</string>
+    <string name="volver">Volver</string>
+    <string name="torneo">Torneo</string>
+    <string name="humanos">Humanos</string>
+    <string name="title_activity_gestion_equipo_menu">GestionEquipoMenu</string>
+    <string name="title_activity_guia_equipos">GuiaEquipos</string>
+    <string name="title_activity_creacion_equipos_lista">CreacionEquiposLista</string>
+    <string name="altos_elfos_nombre">Altos Elfos</string>
+    <string name="caos_nombre">Pacto Del Caos</string>
+    <string name="elfos_oscuros_nombre">Elfos Oscuros</string>
+    <string name="elfos_pro_nombre">Elfos Pro</string>
+    <string name="elfos_silvanos_nombre">Elfos Silvanos</string>
+    <string name="enoanos_caos_nombre">Enanos Del Caos</string>
+    <string name="goblins_nombre">Goblins</string>
+    <string name="halfings_nombre">Halfings</string>
+    <string name="hombres_lagarto_nombre">Hombres Lagarto</string>
+    <string name="khemri_nombre">Khemri</string>
+    <string name="nigromantes_nombre">Nigromantes</string>
+    <string name="no_muertos_nombre">No Muertos</string>
+    <string name="norses_nombre">Norses</string>
+    <string name="nurgle_nombre">Nurgle</string>
+    <string name="ogros_nombre">Ogros</string>
+    <string name="orcos_nombre">Orcos</string>
+    <string name="skaven_nombre">Skaven</string>
+    <string name="vampiros_nombre">Vampiros</string>
+
+</resources>
