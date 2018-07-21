@@ -27,7 +27,12 @@
         <activity
             android:name=".CreacionEquiposLista"
             android:label="@string/title_activity_creacion_equipos_lista" />
-        <activity android:name=".RosterInicial"></activity>
+        <activity
+            android:name=".RosterInicial"
+            android:label="@string/roster_inicial"
+            android:screenOrientation="landscape"/>
+
+
     </application>
 
 </manifest>

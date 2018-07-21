@@ -30,5 +30,6 @@
     <string name="skaven_nombre">Skaven</string>
     <string name="vampiros_nombre">Vampiros</string>
     <string name="amazonas">Amazonas</string>
+    <string name="roster_inicial">Roster Inicial</string>
 
 </resources>

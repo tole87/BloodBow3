@@ -1,6 +1,5 @@
 package com.example.miguel.bludbuwl;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Jugador{
@@ -12,7 +11,7 @@ public class Jugador{
     private int agilidad;
     private int armadura;
     private HashSet<String> habilidades;
-
+    private int cantidadSeleccion;
     private int nivel;
     private int pje;
 
@@ -24,6 +23,17 @@ public class Jugador{
         this.agilidad = agilidad;
         this.armadura = armadura;
         this.habilidades = habilidades;
+    }
+
+    public Jugador(String posicion, int salario, int moviemiento, int fuerza, int agilidad, int armadura, HashSet<String> habilidades, int cantidadSeleccion) {
+        this.posicion = posicion;
+        this.salario = salario;
+        this.moviemiento = moviemiento;
+        this.fuerza = fuerza;
+        this.agilidad = agilidad;
+        this.armadura = armadura;
+        this.habilidades = habilidades;
+        this.cantidadSeleccion = cantidadSeleccion;
     }
 
     public String getPosicion() {
@@ -80,5 +90,9 @@ public class Jugador{
 
     public void setHabilidades(HashSet<String> habilidades) {
         this.habilidades = habilidades;
+    }
+
+    public int getCantidadSeleccion() {
+        return cantidadSeleccion;
     }
 }
