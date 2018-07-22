@@ -92,7 +92,12 @@ public class Jugador{
         this.habilidades = habilidades;
     }
 
+    public void setCantidadSeleccion(int cantidadSeleccion) {
+        this.cantidadSeleccion = cantidadSeleccion;
+    }
+
     public int getCantidadSeleccion() {
+
         return cantidadSeleccion;
     }
 }

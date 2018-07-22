@@ -47,22 +47,23 @@
             android:id="@+id/habilidades"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
             tools:text="Habilidades" />
 
         <Button
-            android:id="@+id/suma"
+            android:id="@+id/suma_jugador"
             android:layout_width="30dp"
             android:layout_height="35dp"
             tools:text="+" />
 
         <TextView
-            android:id="@+id/contador"
+            android:id="@+id/contador_jugador"
             style="@style/Text_View_Roster_inicial"
             android:textAlignment="center"
             tools:text="0" />
 
         <Button
-            android:id="@+id/resta"
+            android:id="@+id/resta_jugador"
             android:layout_width="30dp"
             android:layout_height="35dp"
             android:layout_marginRight="40dp"
