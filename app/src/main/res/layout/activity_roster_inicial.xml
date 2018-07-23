@@ -1,90 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.miguel.bludbuwl.RosterInicial">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-   >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Posicion" />
-
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="Coste" />
-
-        <TextView
-            style="@style/Text_View_Roster_inicial"
-            android:text="MO" />
-        <TextView
-            style="@style/Text_View_Roster_inicial"
-            android:text="FU" />
-        <TextView
-            style="@style/Text_View_Roster_inicial"
-            android:text="AG" />
-        <TextView
-            style="@style/Text_View_Roster_inicial"
-            android:text="AR" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="Habilidades" />
-
-
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/lista_roster_inicial"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="80dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Re-Rolls" />
-        <TextView
-            android:layout_width="80dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Presupuesto Restante" />
+            <TextView
+                android:id="@+id/presupuesto_restante"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                tools:text="50000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="50000" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/suma_reroll"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:text="+" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Posicion" />
 
-        <TextView
-            android:id="@+id/contador_jugador"
-            style="@style/Text_View_Roster_inicial"
-            android:textAlignment="center"
-            android:text="0" />
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Coste" />
 
-        <Button
-            android:id="@+id/_reroll"
-            android:layout_width="30dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="40dp"
-            android:text="-" />
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="MO" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="FU" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="AG" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="AR" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Habilidades" />
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lista_roster_inicial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Re-Rolls" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="50000" />
+
+            <Button
+                android:id="@+id/suma_reroll"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/contador_jugador"
+                style="@style/Text_View_Roster_inicial"
+                android:text="0"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/_reroll"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="40dp"
+                android:text="-" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>

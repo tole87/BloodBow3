@@ -7,7 +7,7 @@ public abstract class Equipo implements Serializable{
     int ficha;
     int icono;
     int nombre;
-    private final int presupuesto = 1000000;
+    private final static int presupuesto = 1000000;
     final HashSet<Jugador> jugadores = new HashSet<>();
 
     public abstract HashSet<Jugador> getJugadores();
@@ -24,7 +24,7 @@ public abstract class Equipo implements Serializable{
         return nombre;
     }
 
-    public int getPresupuesto() {
+    public static int getPresupuesto() {
         return presupuesto;
     }
 

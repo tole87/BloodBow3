@@ -31,10 +31,6 @@ public class RosterInicialAdapter extends ArrayAdapter<Jugador>{
                     R.layout.lista_roster_inicial, parent, false);
         }
 
-
-
-        // Get the {@link Word} object located at this position in the list
-
         final Jugador jugadorActual = getItem(position);
 
 
@@ -79,6 +75,14 @@ public class RosterInicialAdapter extends ArrayAdapter<Jugador>{
 
         botonRestar.setText("-");
 
+        int presupuesto = Equipo.getPresupuesto();
+        Toast.makeText(getContext(), String.valueOf(presupuesto), Toast.LENGTH_LONG).show();
+
+        TextView presupuestoTextView = (TextView) parent.findViewById(R.id.presupuesto_restante);
+
+        presupuestoTextView.setText(String.valueOf(presupuesto));
+
+
         View.OnClickListener sumarButtonClickListener = new View.OnClickListener() {
 
             @Override
@@ -94,6 +98,7 @@ public class RosterInicialAdapter extends ArrayAdapter<Jugador>{
                 contador += 1;
                 jugadorSeleccionado.setCantidadSeleccion(contador);
                 cantidadTextView.setText(String.valueOf(contador));
+
                 Toast.makeText(getContext(), String.valueOf(jugadorSeleccionado.getPosicion()), Toast.LENGTH_LONG).show();
             }
 
@@ -115,8 +120,9 @@ public class RosterInicialAdapter extends ArrayAdapter<Jugador>{
 
                 contador -= 1;
                 jugadorSeleccionado.setCantidadSeleccion(contador);
-                cantidadTextView.setText(String.valueOf(contador));
-
+                Toast.makeText(getContext(), String.valueOf(Equipo.getPresupuesto()), Toast.LENGTH_LONG).show();
+                /**cantidadTextView.setText(String.valueOf(contador));
+                presupuestoTextView.setText(String.valueOf(presupuesto-jugadorSeleccionado.getSalario()));*/
             }
 
         };
