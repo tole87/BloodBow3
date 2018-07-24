@@ -14,11 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.player.Jugador;
 import com.example.miguel.bludbuwl.team.Equipo;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class RosterInicial extends Activity {
 
@@ -53,10 +55,12 @@ public class RosterInicial extends Activity {
         Equipo equipo = (Equipo) getIntent().getSerializableExtra("equipo");
 
         equipo.getJugadores();
+
+        Alineacion nuevaAlineacion = new Alineacion(String.valueOf(equipo.getNombre()),Equipo.PRESUPUESTO);
+
         Toast.makeText(RosterInicial.this, equipo.getNombre(), Toast.LENGTH_LONG).show();
 
         final ArrayList<Jugador> jugadores = new ArrayList<>(equipo.getJugadores());
-
 
         RosterInicialAdapter itemsAdapter = new RosterInicialAdapter(this, jugadores);
 
@@ -79,7 +83,7 @@ public class RosterInicial extends Activity {
             super(context, 0, jugadores);
         }
 
-
+        LinkedHashMap<Jugador,Integer> jugadoresAlineacion= new LinkedHashMap<>();
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Check if an existing view is being reused, otherwise inflate the view
@@ -90,6 +94,7 @@ public class RosterInicial extends Activity {
             }
 
             final Jugador jugadorActual = getItem(position);
+            jugadoresAlineacion.put(jugadorActual,0);
 
 
             TextView posicionTextView = listItemView.findViewById(R.id.posicion);
@@ -121,40 +126,50 @@ public class RosterInicial extends Activity {
 
             final TextView cantidadTextView = listItemView.findViewById(R.id.contador_jugador);
 
-            cantidadTextView.setText(String.valueOf(jugadorActual.getCantidadSeleccion()));
 
             Button botonSumar = listItemView.findViewById(R.id.suma_jugador);
 
             Button botonRestar = listItemView.findViewById(R.id.resta_jugador);
 
-           TextView presupuestoTextView = findViewById(R.id.presupuesto_restante);
-           presupuestoTextView.setText(String.valueOf(Equipo.PRESUPUESTO));
+            TextView presupuestoTextView = findViewById(R.id.presupuesto_restante);
+            presupuestoTextView.setText(String.valueOf(Equipo.PRESUPUESTO));
 
             botonSumar.setTag(position);
-            botonSumar.setOnClickListener(v -> modificarCantidadJugadores(R.id.suma_jugador, jugadorActual, cantidadTextView, presupuestoTextView));
+            botonSumar.setOnClickListener(v -> modificarCantidadJugadores(R.id.suma_jugador, jugadorActual, cantidadTextView, presupuestoTextView, jugadoresAlineacion));
 
             botonRestar.setTag(position);
-            botonRestar.setOnClickListener(v -> modificarCantidadJugadores(R.id.resta_jugador, jugadorActual, cantidadTextView, presupuestoTextView));
+            botonRestar.setOnClickListener(v -> modificarCantidadJugadores(R.id.resta_jugador, jugadorActual, cantidadTextView, presupuestoTextView, jugadoresAlineacion));
 
             listItemView.setBackgroundColor(position % 2 == 1 ? Color.WHITE : Color.LTGRAY);
+
+
+
+
+
+
+
 
             return listItemView;
 
 
         }
 
-        private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView) {
-            int contador = jugadorActual.getCantidadSeleccion();
-            if (id == R.id.suma_jugador) {
+        private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView, LinkedHashMap<Jugador,Integer> jugadoresAlineacion) {
+            int contador = jugadoresAlineacion.get(jugadorActual);
+            if (id== R.id.suma_jugador && (Integer.parseInt(presupuestoTextView.getText().toString())-jugadorActual.getSalario())>=0 && jugadoresAlineacion.get(jugadorActual)<=jugadorActual.getNumMaxPermitido())  {
+                int que = jugadoresAlineacion.get(jugadorActual);
                 contador += 1;
                 presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-jugadorActual.getSalario()));
+                jugadoresAlineacion.put(jugadorActual, contador);
             }
 
-            if (id == R.id.resta_jugador) {
+            if (id == R.id.resta_jugador && (Integer.parseInt(presupuestoTextView.getText().toString())+jugadorActual.getSalario())<=1000000) {
                 contador -= 1;
+                presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+jugadorActual.getSalario()));
+                jugadoresAlineacion.put(jugadorActual, contador);
             }
 
-            jugadorActual.setCantidadSeleccion(contador);
+            jugadorActual.setNumMaxPermitido(contador);
             cantidadTextView.setText(String.valueOf(contador));
 
         }

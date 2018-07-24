@@ -11,7 +11,7 @@ public class Jugador{
     private int agilidad;
     private int armadura;
     private HashSet<String> habilidades;
-    private int cantidadSeleccion;
+    private int numMaxPermitido;
     private int nivel;
     private int pje;
 
@@ -25,7 +25,7 @@ public class Jugador{
         this.habilidades = habilidades;
     }
 
-    public Jugador(String posicion, int salario, int moviemiento, int fuerza, int agilidad, int armadura, HashSet<String> habilidades, int cantidadSeleccion) {
+    public Jugador(String posicion, int salario, int moviemiento, int fuerza, int agilidad, int armadura, HashSet<String> habilidades, int numMaxPermitido) {
         this.posicion = posicion;
         this.salario = salario;
         this.moviemiento = moviemiento;
@@ -33,7 +33,7 @@ public class Jugador{
         this.agilidad = agilidad;
         this.armadura = armadura;
         this.habilidades = habilidades;
-        this.cantidadSeleccion = cantidadSeleccion;
+        this.numMaxPermitido = numMaxPermitido;
     }
 
     public String getPosicion() {
@@ -92,12 +92,12 @@ public class Jugador{
         this.habilidades = habilidades;
     }
 
-    public void setCantidadSeleccion(int cantidadSeleccion) {
-        this.cantidadSeleccion = cantidadSeleccion;
+    public void setNumMaxPermitido(int numMaxPermitido) {
+        this.numMaxPermitido = numMaxPermitido;
     }
 
-    public int getCantidadSeleccion() {
+    public int getNumMaxPermitido() {
 
-        return cantidadSeleccion;
+        return numMaxPermitido;
     }
 }

@@ -4,13 +4,14 @@ import com.example.miguel.bludbuwl.player.Jugador;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public abstract class Equipo implements Serializable {
     int ficha;
     int icono;
     int nombre;
     public final static int PRESUPUESTO = 1000000;
-    final HashSet<Jugador> jugadores = new HashSet<>();
+    final LinkedHashSet<Jugador> jugadores = new LinkedHashSet<>();
 
     public abstract HashSet<Jugador> getJugadores();
 

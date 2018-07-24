@@ -60,7 +60,7 @@
             android:id="@+id/contador_jugador"
             style="@style/Text_View_Roster_inicial"
             android:textAlignment="center"
-            tools:text="0" />
+            android:text="0" />
 
         <Button
             android:id="@+id/resta_jugador"

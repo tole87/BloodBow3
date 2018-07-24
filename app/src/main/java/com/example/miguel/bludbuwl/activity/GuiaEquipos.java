@@ -17,7 +17,7 @@ public class GuiaEquipos extends Activity {
         setContentView(R.layout.activity_guia_equipos);
 
 
-        GuiaEquipoAdapter itemsAdapter = new GuiaEquipoAdapter(this,getEquipos());
+        GestionEquipoMenu.GuiaEquipoAdapter itemsAdapter = new GestionEquipoMenu.GuiaEquipoAdapter(this,getEquipos());
 
         ListView listView = findViewById(R.id.lista_equipos);
 
