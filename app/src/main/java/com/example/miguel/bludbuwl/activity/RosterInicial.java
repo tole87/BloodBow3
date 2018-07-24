@@ -72,7 +72,7 @@ public class RosterInicial extends Activity {
     }
 
 
-    public static class RosterInicialAdapter extends ArrayAdapter<Jugador> {
+    public class RosterInicialAdapter extends ArrayAdapter<Jugador> {
 
 
         public RosterInicialAdapter(Context context, ArrayList<Jugador> jugadores) {
@@ -127,15 +127,14 @@ public class RosterInicial extends Activity {
 
             Button botonRestar = listItemView.findViewById(R.id.resta_jugador);
 
-//            TextView presupuestoTextView = parent.findViewById(R.id.presupuesto_restante);
-//
-//            presupuestoTextView.setText(String.valueOf(Equipo.PRESUPUESTO));
+           TextView presupuestoTextView = findViewById(R.id.presupuesto_restante);
+           presupuestoTextView.setText(String.valueOf(Equipo.PRESUPUESTO));
 
             botonSumar.setTag(position);
-            botonSumar.setOnClickListener(v -> modificarCantidadJugadores(R.id.suma_jugador, jugadorActual, cantidadTextView));
+            botonSumar.setOnClickListener(v -> modificarCantidadJugadores(R.id.suma_jugador, jugadorActual, cantidadTextView, presupuestoTextView));
 
             botonRestar.setTag(position);
-            botonRestar.setOnClickListener(v -> modificarCantidadJugadores(R.id.resta_jugador, jugadorActual, cantidadTextView));
+            botonRestar.setOnClickListener(v -> modificarCantidadJugadores(R.id.resta_jugador, jugadorActual, cantidadTextView, presupuestoTextView));
 
             listItemView.setBackgroundColor(position % 2 == 1 ? Color.WHITE : Color.LTGRAY);
 
@@ -144,10 +143,11 @@ public class RosterInicial extends Activity {
 
         }
 
-        private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView) {
+        private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView) {
             int contador = jugadorActual.getCantidadSeleccion();
             if (id == R.id.suma_jugador) {
                 contador += 1;
+                presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-jugadorActual.getSalario()));
             }
 
             if (id == R.id.resta_jugador) {
@@ -156,6 +156,7 @@ public class RosterInicial extends Activity {
 
             jugadorActual.setCantidadSeleccion(contador);
             cantidadTextView.setText(String.valueOf(contador));
+
         }
     }
 }
