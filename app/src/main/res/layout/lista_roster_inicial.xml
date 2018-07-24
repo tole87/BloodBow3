@@ -54,7 +54,7 @@
             android:id="@+id/suma_jugador"
             android:layout_width="30dp"
             android:layout_height="35dp"
-            tools:text="+" />
+            android:text="+" />
 
         <TextView
             android:id="@+id/contador_jugador"
@@ -67,7 +67,7 @@
             android:layout_width="30dp"
             android:layout_height="35dp"
             android:layout_marginRight="40dp"
-            tools:text="-" />
+            android:text="-" />
 
     </LinearLayout>
 </LinearLayout>

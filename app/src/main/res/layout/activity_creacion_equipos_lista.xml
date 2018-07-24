@@ -5,4 +5,4 @@
     android:id="@+id/lista_equipos_creacion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.miguel.bludbuwl.CreacionEquiposLista"/>
+    tools:context="com.example.miguel.bludbuwl.activity.CreacionEquiposLista"/>

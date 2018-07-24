@@ -17,18 +17,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GestionEquipoMenu"
+            android:name=".activity.GestionEquipoMenu"
             android:label="@string/title_activity_gestion_equipo_menu"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".GuiaEquipos"
+            android:name=".activity.GuiaEquipos"
             android:label="@string/title_activity_guia_equipos"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".CreacionEquiposLista"
+            android:name=".activity.CreacionEquiposLista"
             android:label="@string/title_activity_creacion_equipos_lista" />
         <activity
-            android:name=".RosterInicial"
+            android:name=".activity.RosterInicial"
             android:label="@string/roster_inicial"
             android:screenOrientation="landscape"/>
 
