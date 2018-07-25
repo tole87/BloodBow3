@@ -13,6 +13,7 @@ public class Orcos extends Equipo {
         this.ficha = R.drawable.orcos_equipo;
         this.icono = R.drawable.orcos_logo;
         this.nombre = R.string.orcos_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

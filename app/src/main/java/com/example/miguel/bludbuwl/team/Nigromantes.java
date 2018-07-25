@@ -13,6 +13,7 @@ public class Nigromantes extends Equipo {
         this.ficha = R.drawable.nigromantes_equipo;
         this.icono = R.drawable.nigromantes_logo;
         this.nombre = R.string.nigromantes_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

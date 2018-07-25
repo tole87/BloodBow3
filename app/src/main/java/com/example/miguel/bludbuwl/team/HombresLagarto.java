@@ -13,6 +13,7 @@ public class HombresLagarto extends Equipo {
         this.ficha = R.drawable.hombres_lagarto_equipo;
         this.icono = R.drawable.hombres_lagarto_logo;
         this.nombre = R.string.hombres_lagarto_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

@@ -13,6 +13,7 @@ public class Nurgle extends Equipo {
         this.ficha = R.drawable.nurgle_equipo;
         this.icono = R.drawable.nurgle_logo;
         this.nombre = R.string.nurgle_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

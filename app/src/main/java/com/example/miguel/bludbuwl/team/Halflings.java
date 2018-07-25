@@ -13,6 +13,7 @@ public class Halflings extends Equipo {
         this.ficha = R.drawable.halfings_equipo;
         this.icono = R.drawable.halfings_logo;
         this.nombre = R.string.halfings_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

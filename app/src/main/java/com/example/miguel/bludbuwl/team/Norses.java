@@ -13,6 +13,7 @@ public class Norses extends Equipo {
         this.ficha = R.drawable.norses_equipo;
         this.icono = R.drawable.norses_logo;
         this.nombre = R.string.norses_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

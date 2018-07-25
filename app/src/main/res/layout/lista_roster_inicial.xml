@@ -13,8 +13,9 @@
 
         <TextView
             android:id="@+id/posicion"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             tools:text="linea" />
 
         <TextView
@@ -45,7 +46,7 @@
 
         <TextView
             android:id="@+id/habilidades"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             tools:text="Habilidades" />
@@ -58,9 +59,23 @@
 
         <TextView
             android:id="@+id/contador_jugador"
-            style="@style/Text_View_Roster_inicial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/max_jugador"
+            android:layout_width="16dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            tools:text="16" />
 
         <Button
             android:id="@+id/resta_jugador"

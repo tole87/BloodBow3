@@ -13,6 +13,7 @@ public class EnanosCaos extends Equipo {
         this.ficha = R.drawable.enanos_caos_equipo;
         this.icono = R.drawable.enanos_caos_logo;
         this.nombre = R.string.enanos_caos_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

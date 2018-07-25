@@ -13,6 +13,7 @@ public class Khemri extends Equipo {
         this.ficha = R.drawable.khemri_equipo;
         this.icono = R.drawable.khemri_logo;
         this.nombre = R.string.khemri_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

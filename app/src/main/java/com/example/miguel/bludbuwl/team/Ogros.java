@@ -14,6 +14,7 @@ public class Ogros extends Equipo {
         this.ficha = R.drawable.ogros_equipo;
         this.icono = R.drawable.ogros_logo;
         this.nombre = R.string.ogros_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

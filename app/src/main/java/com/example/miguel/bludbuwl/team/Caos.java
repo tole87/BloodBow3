@@ -13,6 +13,7 @@ public class Caos extends Equipo {
         this.ficha = R.drawable.caos_equipo;
         this.icono = R.drawable.caos_logo;
         this.nombre = R.string.caos_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

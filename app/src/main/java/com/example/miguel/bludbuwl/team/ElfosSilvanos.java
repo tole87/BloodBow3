@@ -13,6 +13,7 @@ public class ElfosSilvanos extends Equipo{
         this.ficha = R.drawable.elfos_silvanos_equipo;
         this.icono = R.drawable.elfos_silvanos_logo;
         this.nombre = R.string.elfos_silvanos_nombre;
+        this.precioReRoll = 50000;
     }
 
     @Override

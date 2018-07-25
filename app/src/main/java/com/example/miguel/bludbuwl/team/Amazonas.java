@@ -13,6 +13,7 @@ public class Amazonas extends Equipo {
         this.ficha = R.drawable.amazonas_equipo;
         this.icono = R.drawable.amazonas_logo;
         this.nombre = R.string.amazonas;
+        this.precioReRoll = 50000;
     }
 
     @Override

@@ -13,6 +13,7 @@ public class ElfosPro extends Equipo {
         this.ficha = R.drawable.elfos_pro_equipo;
         this.icono = R.drawable.elfos_pro_logo;
         this.nombre = R.string.elfos_pro_nombre;
+        this.precioReRoll = 50000;
     }
 
     @Override

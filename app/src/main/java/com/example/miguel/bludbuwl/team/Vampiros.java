@@ -13,6 +13,7 @@ public class Vampiros extends Equipo {
         this.ficha = R.drawable.vampiros_equipo;
         this.icono = R.drawable.vampiros_logo;
         this.nombre = R.string.vampiros_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

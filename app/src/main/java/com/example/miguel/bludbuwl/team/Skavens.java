@@ -13,6 +13,7 @@ public class Skavens extends Equipo {
         this.ficha = R.drawable.skaven_equipo;
         this.icono = R.drawable.skaven_logo;
         this.nombre = R.string.skaven_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

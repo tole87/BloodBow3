@@ -13,6 +13,7 @@ public class NoMuertos extends Equipo {
         this.ficha = R.drawable.no_muertos_equipo;
         this.icono = R.drawable.no_muertos_logo;
         this.nombre = R.string.no_muertos_nombre;
+        this.precioReRoll = 70000;
     }
 
     @Override

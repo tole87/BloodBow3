@@ -13,6 +13,7 @@ public class AltosElfos extends Equipo{
         this.ficha = R.drawable.altos_elfos_equipo;
         this.icono = R.drawable.altos_elfos_logo;
         this.nombre = R.string.altos_elfos_nombre;
+        this.precioReRoll = 50000;
     }
 
     @Override

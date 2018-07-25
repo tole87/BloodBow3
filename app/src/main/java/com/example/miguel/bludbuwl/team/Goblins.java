@@ -13,6 +13,7 @@ public class Goblins extends Equipo {
         this.ficha = R.drawable.goblins_equipo;
         this.icono = R.drawable.goblins_logo;
         this.nombre = R.string.goblins_nombre;
+        this.precioReRoll = 60000;
     }
 
     @Override

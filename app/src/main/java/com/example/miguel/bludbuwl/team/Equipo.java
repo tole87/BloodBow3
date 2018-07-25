@@ -10,6 +10,7 @@ public abstract class Equipo implements Serializable {
     int ficha;
     int icono;
     int nombre;
+    int precioReRoll;
     public final static int PRESUPUESTO = 1000000;
     final LinkedHashSet<Jugador> jugadores = new LinkedHashSet<>();
 
@@ -25,5 +26,9 @@ public abstract class Equipo implements Serializable {
 
     public int getNombre() {
         return nombre;
+    }
+
+    public int getPrecioReRoll() {
+        return precioReRoll;
     }
 }

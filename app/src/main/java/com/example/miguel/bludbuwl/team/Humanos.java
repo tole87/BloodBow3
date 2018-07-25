@@ -14,6 +14,7 @@ public class Humanos extends Equipo {
         this.ficha = R.drawable.humanos_equipo;
         this.icono = R.drawable.humanos_logo;
         this.nombre = R.string.humanos;
+        this.precioReRoll = 50000;
     }
 
     @Override

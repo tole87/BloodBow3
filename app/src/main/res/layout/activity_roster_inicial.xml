@@ -15,17 +15,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="150dp"
+
+            <EditText
+                android:id="@+id/nombre_alineacion"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Presupuesto Restante" />
+                android:inputType="text"
+                android:text="Nombre Alineacion"
+                android:textColor="#BDBDBD" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Presupuesto Restante"
+                android:textColor="#212121"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/presupuesto_restante"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="50000" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#212121" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -35,12 +57,16 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Posicion" />
+                android:text="Posicion"
+                android:textColor="#212121"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="Coste" />
+                android:text="Coste"
+                android:textColor="#212121"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/Text_View_Roster_inicial"
@@ -61,49 +87,255 @@
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="Habilidades" />
+                android:text="Habilidades"
+                android:textColor="#212121"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#212121" />
 
         <ListView
             android:id="@+id/lista_roster_inicial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="80dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Re-Rolls" />
+                android:layout_marginTop="5dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="50000" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Re-Rolls" />
+
+                    <TextView
+                        android:id="@+id/precio_reroll"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        tools:text="99000" />
+
+                    <Button
+                        android:id="@+id/suma_reroll"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/contador_reroll"
+                        style="@style/Text_View_Roster_inicial"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/resta_reroll"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="40dp"
+                        android:text="-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Medico" />
+
+                    <TextView
+                        android:id="@+id/precio_medico"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="50000" />
+
+                    <Button
+                        android:id="@+id/suma_medico"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/contador_medico"
+                        android:layout_width="12dp"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:textSize="11sp"/>
+
+                    <TextView
+                        android:layout_width="13dp"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:textSize="11sp"/>
+
+                    <TextView
+                        android:layout_width="12dp"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="#212121"
+                        android:textSize="11sp"
+                        />
+
+                    <Button
+                        android:id="@+id/resta_medico"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="40dp"
+                        android:text="-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Factor de hinchas" />
+
+                    <TextView
+                        android:id="@+id/precio_hincha"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="10000" />
+
+                    <Button
+                        android:id="@+id/suma_hincha"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/contador_hincha"
+                        style="@style/Text_View_Roster_inicial"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/resta_hincha"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="40dp"
+                        android:text="-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Animadora" />
+
+                    <TextView
+                        android:id="@+id/precio_animadora"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="10000" />
+
+                    <Button
+                        android:id="@+id/suma_animadora"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/contador_animadora"
+                        style="@style/Text_View_Roster_inicial"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/resta_animadora"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="40dp"
+                        android:text="-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Ayudante entrenador" />
+
+                    <TextView
+                        android:id="@+id/precio_ayudante"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="10000" />
+
+                    <Button
+                        android:id="@+id/suma_ayudante"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/contador_ayudante"
+                        style="@style/Text_View_Roster_inicial"
+                        android:text="0"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/resta_ayudante"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="40dp"
+                        android:text="-" />
+                </LinearLayout>
+            </LinearLayout>
 
             <Button
-                android:id="@+id/suma_reroll"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/contador_jugador"
-                style="@style/Text_View_Roster_inicial"
-                android:text="0"
-                android:textAlignment="center" />
-
-            <Button
-                android:id="@+id/_reroll"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:layout_marginRight="40dp"
-                android:text="-" />
-        </LinearLayout>
+                android:id="@+id/guardar_alineacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Guardar Equipo" />
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>
