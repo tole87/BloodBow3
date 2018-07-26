@@ -335,7 +335,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="25dp"
                 android:layout_marginRight="25dp"
-                android:text="Guardar Equipo" />
+                android:text="Guardar Equipo"
+                android:onClick="botonGuardar"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

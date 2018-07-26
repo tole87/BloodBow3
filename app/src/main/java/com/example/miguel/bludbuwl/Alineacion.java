@@ -23,6 +23,10 @@ public class Alineacion {
         this.presupuestoRestante = Equipo.PRESUPUESTO;
     }
 
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
+    }
+
     public void setPresupuestoRestante(int presupuestoRestante) {
         this.presupuestoRestante = presupuestoRestante;
     }
@@ -88,19 +92,29 @@ public class Alineacion {
 
     public void addPlayer(Jugador jugador) {
         if (!jugadores.containsKey(jugador)) {
-            jugadores.put(jugador, 0);
-        }
-        jugadores.put(jugador, jugadores.get(jugador) + 1);
+            jugadores.put(jugador, 1);
+        }else{
+        jugadores.put(jugador, jugadores.get(jugador) + 1);}
     }
 
     public void deletePlayer(Jugador jugador) {
         if (jugadores.get(jugador)==1) {
             jugadores.remove(jugador);
-        }
-        jugadores.put(jugador, jugadores.get(jugador) - 1);
+        }else{
+        jugadores.put(jugador, jugadores.get(jugador) - 1);}
     }
 
     public int getNumPlayers(Jugador jugador) {
         return jugadores.get(jugador);
+    }
+
+    public boolean existeJugador(Jugador jugador) {
+        return jugadores.containsKey(jugador);
+    }
+
+    @Override
+    public String toString() {
+        return nombreEquipo + ',' + iconoEquipo + ',' + presupuestoRestante + ',' +  reRolls + ',' + jugadores + ',' + Medico + ',' +  factorHinchas + ',' + factorHinchas + ',' + animadoras + ',' + ayudanteEntrenador +'\n';
+
     }
 }

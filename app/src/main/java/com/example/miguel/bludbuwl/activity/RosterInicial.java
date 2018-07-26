@@ -2,13 +2,16 @@ package com.example.miguel.bludbuwl.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +22,8 @@ import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.player.Jugador;
 import com.example.miguel.bludbuwl.team.Equipo;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -64,6 +69,11 @@ public class RosterInicial extends Activity {
 
     }
 
+    public void botonGuardar(View view) {
+        alineacion.setNombreEquipo(((EditText)findViewById(R.id.nombre_alineacion)).getText().toString());
+        guardarAlineacion(alineacion.toString(),this);
+        startActivity(new Intent(this, GestionEquipoMenu.class));
+    }
 
     public class RosterInicialAdapter extends ArrayAdapter<Jugador> {
 
@@ -223,23 +233,20 @@ public class RosterInicial extends Activity {
     }
 
     private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView, LinkedHashMap<Jugador, Integer> jugadoresAlineacion) {
-        int contador = jugadoresAlineacion.get(jugadorActual);
-        if ((id == R.id.suma_jugador && (alineacion.getPresupuestoRestante() - jugadorActual.getSalario()) >= 0 && jugadoresAlineacion.get(jugadorActual) < jugadorActual.getNumMaxPermitido())) {
-            contador += 1;
+
+        if ((id == R.id.suma_jugador && (alineacion.getPresupuestoRestante() - jugadorActual.getSalario()) >= 0 && Integer.parseInt(cantidadTextView.getText().toString()) < jugadorActual.getNumMaxPermitido())) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()- jugadorActual.getSalario());
             presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString()) - jugadorActual.getSalario()));
-            jugadoresAlineacion.put(jugadorActual, contador);
             alineacion.addPlayer(jugadorActual);
         }
 
-        if (id == R.id.resta_jugador && (Integer.parseInt(presupuestoTextView.getText().toString()) + jugadorActual.getSalario()) <= 1000000 && Integer.parseInt(cantidadTextView.getText().toString()) > 0) {
-            contador -= 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString()) + jugadorActual.getSalario()));
-            jugadoresAlineacion.put(jugadorActual, contador);
+        if (id == R.id.resta_jugador && alineacion.existeJugador(jugadorActual)) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()+ jugadorActual.getSalario());
             alineacion.deletePlayer(jugadorActual);
         }
         presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
-        cantidadTextView.setText(String.valueOf(contador));
+        if (alineacion.existeJugador(jugadorActual)){
+        cantidadTextView.setText(String.valueOf(alineacion.getNumPlayers(jugadorActual)));} else{cantidadTextView.setText(String.valueOf(0));}
 
     }
 
@@ -264,5 +271,15 @@ public class RosterInicial extends Activity {
         listView.setLayoutParams(params);
     }
 
+    private void guardarAlineacion(String data,Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("BludbulwAlineacionCreadas.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
 
 }
