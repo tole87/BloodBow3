@@ -22,41 +22,22 @@ import com.example.miguel.bludbuwl.team.Equipo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import static com.example.miguel.bludbuwl.team.Equipo.PRESUPUESTO;
+
 public class RosterInicial extends Activity {
 
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null)
-            return;
-
-        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
-        int totalHeight = 0;
-        View view = null;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            view = listAdapter.getView(i, view, listView);
-            if (i == 0)
-                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-            totalHeight += view.getMeasuredHeight();
-        }
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
-    }
+    private Alineacion alineacion;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roster_inicial);
-
-
         Equipo equipo = (Equipo) getIntent().getSerializableExtra("equipo");
 
         equipo.getJugadores();
 
-        Alineacion nuevaAlineacion = new Alineacion(String.valueOf(equipo.getNombre()),Equipo.PRESUPUESTO);
+        alineacion = new Alineacion(equipo);
 
         Toast.makeText(RosterInicial.this, equipo.getNombre(), Toast.LENGTH_LONG).show();
 
@@ -67,19 +48,19 @@ public class RosterInicial extends Activity {
         setListViewHeightBasedOnChildren(listView);
 
 
-        ((TextView)findViewById(R.id.precio_reroll)).setText(String.valueOf(equipo.getPrecioReRoll()));
+        ((TextView) findViewById(R.id.precio_reroll)).setText(String.valueOf(equipo.getPrecioReRoll()));
 
 
-        findViewById(R.id.suma_reroll).setOnClickListener(v -> modificarCantidadReRoll(R.id.suma_reroll,findViewById(R.id.contador_reroll),findViewById(R.id.presupuesto_restante),nuevaAlineacion,equipo));
-        findViewById(R.id.resta_reroll).setOnClickListener(v -> modificarCantidadReRoll(R.id.resta_reroll,findViewById(R.id.contador_reroll),findViewById(R.id.presupuesto_restante),nuevaAlineacion,equipo));
-        findViewById(R.id.suma_hincha).setOnClickListener(v -> modificarFactorHinchas(R.id.suma_hincha,findViewById(R.id.contador_hincha),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_hincha)));
-        findViewById(R.id.resta_hincha).setOnClickListener(v -> modificarFactorHinchas(R.id.resta_hincha,findViewById(R.id.contador_hincha),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_hincha)));
-        findViewById(R.id.suma_animadora).setOnClickListener(v -> modificarAnimadora(R.id.suma_animadora,findViewById(R.id.contador_animadora),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_animadora)));
-        findViewById(R.id.resta_animadora).setOnClickListener(v -> modificarAnimadora(R.id.resta_animadora,findViewById(R.id.contador_animadora),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_animadora)));
-        findViewById(R.id.suma_ayudante).setOnClickListener(v -> modificarAyudante(R.id.suma_ayudante,findViewById(R.id.contador_ayudante),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_ayudante)));
-        findViewById(R.id.resta_ayudante).setOnClickListener(v -> modificarAyudante(R.id.resta_ayudante,findViewById(R.id.contador_ayudante),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_ayudante)));
-        findViewById(R.id.suma_medico).setOnClickListener(v -> modificarMedico(R.id.suma_medico,findViewById(R.id.contador_medico),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_medico)));
-        findViewById(R.id.resta_medico).setOnClickListener(v -> modificarMedico(R.id.resta_medico,findViewById(R.id.contador_medico),findViewById(R.id.presupuesto_restante),nuevaAlineacion,findViewById(R.id.precio_medico)));
+        findViewById(R.id.suma_reroll).setOnClickListener(v -> modificarCantidadReRoll(R.id.suma_reroll, findViewById(R.id.contador_reroll), findViewById(R.id.presupuesto_restante), equipo));
+        findViewById(R.id.resta_reroll).setOnClickListener(v -> modificarCantidadReRoll(R.id.resta_reroll, findViewById(R.id.contador_reroll), findViewById(R.id.presupuesto_restante), equipo));
+        findViewById(R.id.suma_hincha).setOnClickListener(v -> modificarFactorHinchas(R.id.suma_hincha, findViewById(R.id.contador_hincha), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.resta_hincha).setOnClickListener(v -> modificarFactorHinchas(R.id.resta_hincha, findViewById(R.id.contador_hincha), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.suma_animadora).setOnClickListener(v -> modificarAnimadora(R.id.suma_animadora, findViewById(R.id.contador_animadora), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.resta_animadora).setOnClickListener(v -> modificarAnimadora(R.id.resta_animadora, findViewById(R.id.contador_animadora), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.suma_ayudante).setOnClickListener(v -> modificarAyudante(R.id.suma_ayudante, findViewById(R.id.contador_ayudante), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.resta_ayudante).setOnClickListener(v -> modificarAyudante(R.id.resta_ayudante, findViewById(R.id.contador_ayudante), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.suma_medico).setOnClickListener(v -> modificarMedico(R.id.suma_medico, findViewById(R.id.contador_medico), findViewById(R.id.presupuesto_restante)));
+        findViewById(R.id.resta_medico).setOnClickListener(v -> modificarMedico(R.id.resta_medico, findViewById(R.id.contador_medico), findViewById(R.id.presupuesto_restante)));
 
     }
 
@@ -91,7 +72,8 @@ public class RosterInicial extends Activity {
             super(context, 0, jugadores);
         }
 
-        LinkedHashMap<Jugador,Integer> jugadoresAlineacion= new LinkedHashMap<>();
+        LinkedHashMap<Jugador, Integer> jugadoresAlineacion = new LinkedHashMap<>();
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Check if an existing view is being reused, otherwise inflate the view
@@ -102,7 +84,7 @@ public class RosterInicial extends Activity {
             }
 
             final Jugador jugadorActual = getItem(position);
-            jugadoresAlineacion.put(jugadorActual,0);
+            jugadoresAlineacion.put(jugadorActual, 0);
 
 
             TextView posicionTextView = listItemView.findViewById(R.id.posicion);
@@ -133,6 +115,7 @@ public class RosterInicial extends Activity {
             habilidadesTextView.setText(String.valueOf(jugadorActual.getHabilidades()).replace("[", "").replace("]", ""));
 
             final TextView cantidadTextView = listItemView.findViewById(R.id.contador_jugador);
+
             ((TextView) listItemView.findViewById(R.id.max_jugador)).setText(String.valueOf(jugadorActual.getNumMaxPermitido()));
 
             Button botonSumarJugador = listItemView.findViewById(R.id.suma_jugador);
@@ -140,8 +123,7 @@ public class RosterInicial extends Activity {
             Button botonRestarJugador = listItemView.findViewById(R.id.resta_jugador);
 
             TextView presupuestoTextView = findViewById(R.id.presupuesto_restante);
-            presupuestoTextView.setText(String.valueOf(Equipo.PRESUPUESTO));
-
+            presupuestoTextView.setText(String.valueOf(PRESUPUESTO));
 
 
             botonSumarJugador.setTag(position);
@@ -153,123 +135,134 @@ public class RosterInicial extends Activity {
             listItemView.setBackgroundColor(position % 2 == 1 ? Color.WHITE : Color.LTGRAY);
 
 
-
-
-
-
-
-
             return listItemView;
 
 
         }
-        private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView, LinkedHashMap<Jugador,Integer> jugadoresAlineacion) {
-            int contador = jugadoresAlineacion.get(jugadorActual);
-            if ((id== R.id.suma_jugador && (Integer.parseInt(presupuestoTextView.getText().toString())-jugadorActual.getSalario())>=0 && jugadoresAlineacion.get(jugadorActual)<jugadorActual.getNumMaxPermitido()))  {
-                int que = jugadoresAlineacion.get(jugadorActual);
-                contador += 1;
-                presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-jugadorActual.getSalario()));
-                jugadoresAlineacion.put(jugadorActual, contador);
-            }
-
-            if (id == R.id.resta_jugador && (Integer.parseInt(presupuestoTextView.getText().toString())+jugadorActual.getSalario())<=1000000 && Integer.parseInt(cantidadTextView.getText().toString())>0) {
-                contador -= 1;
-                presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+jugadorActual.getSalario()));
-                jugadoresAlineacion.put(jugadorActual, contador);
-            }
-            cantidadTextView.setText(String.valueOf(contador));
-
-        }
 
 
     }
 
-    private void modificarCantidadReRoll(int id, TextView cantidadTextView, TextView presupuestoTextView, Alineacion nuevaAlineacion, Equipo equipo) {
-        int contadorReRoll = Integer.parseInt(cantidadTextView.getText().toString());
-        if (id== R.id.suma_reroll && (Integer.parseInt(presupuestoTextView.getText().toString())-equipo.getPrecioReRoll())>=0)  {
-            contadorReRoll += 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-equipo.getPrecioReRoll()));
-            nuevaAlineacion.setReRolls(contadorReRoll);
+    private void modificarCantidadReRoll(int id, TextView cantidadTextView, TextView presupuestoTextView, Equipo equipo) {
+        if (id == R.id.suma_reroll && (alineacion.getPresupuestoRestante() - equipo.getPrecioReRoll()) >= 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - equipo.getPrecioReRoll());
+            alineacion.setReRolls(alineacion.getReRolls() + 1);
         }
 
-        if (id == R.id.resta_reroll & (Integer.parseInt(presupuestoTextView.getText().toString())+equipo.getPrecioReRoll())<=1000000 & Integer.parseInt(cantidadTextView.getText().toString())>0) {
-            contadorReRoll -= 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+equipo.getPrecioReRoll()));
-            nuevaAlineacion.setReRolls(contadorReRoll);
+        if (id == R.id.resta_reroll && alineacion.getReRolls() > 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + equipo.getPrecioReRoll());
+            alineacion.setReRolls(alineacion.getReRolls() - 1);
         }
-        cantidadTextView.setText(String.valueOf(contadorReRoll));
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+        cantidadTextView.setText(String.valueOf(alineacion.getReRolls()));
 
     }
 
-    private void modificarFactorHinchas(int id, TextView cantidadTextView, TextView presupuestoTextView, Alineacion nuevaAlineacion, TextView precioFactorHinchas) {
-        int contadorFactorHinchas = Integer.parseInt(cantidadTextView.getText().toString());
-        if (id== R.id.suma_hincha && (Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioFactorHinchas.getText().toString()))>=0)  {
-            contadorFactorHinchas += 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioFactorHinchas.getText().toString())));
-            nuevaAlineacion.setFactorHinchas(contadorFactorHinchas);
+    private void modificarFactorHinchas(int id, TextView cantidadTextView, TextView presupuestoTextView) {
+
+        if (id == R.id.suma_hincha && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
+            alineacion.setFactorHinchas(alineacion.getFactorHinchas()+1);
         }
 
-        if (id == R.id.resta_hincha & (Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioFactorHinchas.getText().toString()))<=1000000 & Integer.parseInt(cantidadTextView.getText().toString())>0) {
-            contadorFactorHinchas -= 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioFactorHinchas.getText().toString())));
-            nuevaAlineacion.setFactorHinchas(contadorFactorHinchas);
+        if (id == R.id.resta_hincha && alineacion.getFactorHinchas() > 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
+            alineacion.setFactorHinchas(alineacion.getFactorHinchas()-1);
         }
-        cantidadTextView.setText(String.valueOf(contadorFactorHinchas));
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+        cantidadTextView.setText(String.valueOf(alineacion.getFactorHinchas()));
 
     }
 
-    private void modificarAnimadora(int id, TextView cantidadTextView, TextView presupuestoTextView, Alineacion nuevaAlineacion, TextView precioAnimadora) {
-        int contadorAnimadora = Integer.parseInt(cantidadTextView.getText().toString());
-        if (id== R.id.suma_animadora && (Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioAnimadora.getText().toString()))>=0)  {
-            contadorAnimadora += 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioAnimadora.getText().toString())));
-            nuevaAlineacion.setAnimadoras(contadorAnimadora);
+    private void modificarAnimadora(int id, TextView cantidadTextView, TextView presupuestoTextView) {
+        if (id == R.id.suma_animadora && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
+            alineacion.setAnimadoras(alineacion.getAnimadoras()+1);
         }
 
-        if (id == R.id.resta_animadora & (Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioAnimadora.getText().toString()))<=1000000 & Integer.parseInt(cantidadTextView.getText().toString())>0) {
-            contadorAnimadora -= 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioAnimadora.getText().toString())));
-            nuevaAlineacion.setAnimadoras(contadorAnimadora);
+        if (id == R.id.resta_animadora && alineacion.getAnimadoras() > 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
+            alineacion.setAnimadoras(alineacion.getAnimadoras()-1);
         }
-        cantidadTextView.setText(String.valueOf(contadorAnimadora));
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+        cantidadTextView.setText(String.valueOf(alineacion.getAnimadoras()));
 
     }
 
-    private void modificarAyudante(int id, TextView cantidadTextView, TextView presupuestoTextView, Alineacion nuevaAlineacion, TextView precioAyudante) {
-        int contadorAyudante = Integer.parseInt(cantidadTextView.getText().toString());
-        if (id== R.id.suma_ayudante && (Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioAyudante.getText().toString()))>=0)  {
-            contadorAyudante += 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioAyudante.getText().toString())));
-            nuevaAlineacion.setAyudanteEntrenador(contadorAyudante);
+    private void modificarAyudante(int id, TextView cantidadTextView, TextView presupuestoTextView) {
+        if (id == R.id.suma_ayudante && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
+            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador()+1);
         }
 
-        if (id == R.id.resta_ayudante & (Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioAyudante.getText().toString()))<=1000000 & Integer.parseInt(cantidadTextView.getText().toString())>0) {
-            contadorAyudante -= 1;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioAyudante.getText().toString())));
-            nuevaAlineacion.setAyudanteEntrenador(contadorAyudante);
+        if (id == R.id.resta_ayudante && alineacion.getAyudanteEntrenador() > 0) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
+            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador()-1);
         }
-        cantidadTextView.setText(String.valueOf(contadorAyudante));
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+        cantidadTextView.setText(String.valueOf(alineacion.getAyudanteEntrenador()));
 
     }
 
-    private void modificarMedico(int id, TextView cantidadTextView, TextView presupuestoTextView, Alineacion nuevaAlineacion, TextView precioMedico) {
+    private void modificarMedico(int id, TextView cantidadTextView, TextView presupuestoTextView) {
 
-       boolean contadorAyudante;
 
-        if (id== R.id.suma_medico && (Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioMedico.getText().toString()))>=0 && Integer.parseInt(cantidadTextView.getText().toString())==0)  {
-            contadorAyudante = true;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())-Integer.parseInt(precioMedico.getText().toString())));
-            nuevaAlineacion.setMedico(contadorAyudante);
+        if (id == R.id.suma_medico && (alineacion.getPresupuestoRestante() - 50000) >= 0 && !alineacion.isMedico()) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()-50000);
+            alineacion.setMedico(true);
             cantidadTextView.setText(String.valueOf(1));
         }
 
-        if (id == R.id.resta_medico & (Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioMedico.getText().toString()))<=1000000 & Integer.parseInt(cantidadTextView.getText().toString())==1) {
-            contadorAyudante = false;
-            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString())+Integer.parseInt(precioMedico.getText().toString())));
-            nuevaAlineacion.setMedico(contadorAyudante);
+        if (id == R.id.resta_medico && alineacion.isMedico()) {
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()+50000);
+            alineacion.setMedico(false);
             cantidadTextView.setText(String.valueOf(0));
         }
 
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+    }
+
+    private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView, LinkedHashMap<Jugador, Integer> jugadoresAlineacion) {
+        int contador = jugadoresAlineacion.get(jugadorActual);
+        if ((id == R.id.suma_jugador && (alineacion.getPresupuestoRestante() - jugadorActual.getSalario()) >= 0 && jugadoresAlineacion.get(jugadorActual) < jugadorActual.getNumMaxPermitido())) {
+            contador += 1;
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()- jugadorActual.getSalario());
+            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString()) - jugadorActual.getSalario()));
+            jugadoresAlineacion.put(jugadorActual, contador);
+            alineacion.addPlayer(jugadorActual);
+        }
+
+        if (id == R.id.resta_jugador && (Integer.parseInt(presupuestoTextView.getText().toString()) + jugadorActual.getSalario()) <= 1000000 && Integer.parseInt(cantidadTextView.getText().toString()) > 0) {
+            contador -= 1;
+            presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString()) + jugadorActual.getSalario()));
+            jugadoresAlineacion.put(jugadorActual, contador);
+            alineacion.deletePlayer(jugadorActual);
+        }
+        presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
+        cantidadTextView.setText(String.valueOf(contador));
 
     }
+
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
+
+
 }

@@ -20,9 +20,9 @@ public class HombresLagarto extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Eslizones", 60000, 8, 2, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.ESCURRIDIZO.getNombre()))));
-            jugadores.add(new Jugador("Saurios", 80000, 6, 4, 1, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre()))));
-            jugadores.add(new Jugador("Kroxigor", 140000, 6, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.CABEZAHUECA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.COLAPRENSIL.getNombre()))));
+            jugadores.add(new Jugador("Eslizones", 60000, 8, 2, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.ESCURRIDIZO.getNombre())),16));
+            jugadores.add(new Jugador("Saurios", 80000, 6, 4, 1, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),6));
+            jugadores.add(new Jugador("Kroxigor", 140000, 6, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.CABEZAHUECA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.COLAPRENSIL.getNombre())),1));
         }
         return jugadores;
     }

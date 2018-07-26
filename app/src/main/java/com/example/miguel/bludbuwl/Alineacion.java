@@ -1,27 +1,26 @@
 package com.example.miguel.bludbuwl;
 
 import com.example.miguel.bludbuwl.player.Jugador;
+import com.example.miguel.bludbuwl.team.Equipo;
 
 import java.util.LinkedHashMap;
 
-public class Alineacion{
+public class Alineacion {
 
     private String nombreEquipo;
-    private String razaEquipo;
+    private int iconoEquipo;
     private int presupuestoRestante;
     private int reRolls;
-    private LinkedHashMap <Jugador,Integer> jugadoresAlineacion;
+    private final LinkedHashMap<Jugador, Integer> jugadores = new LinkedHashMap<>();
     private boolean Medico;
-    private int  factorHinchas;
+    private int factorHinchas;
     private int animadoras;
     private int ayudanteEntrenador;
 
 
-    public Alineacion(String razaEquipo, int presupuestoRestante) {
-
-        this.razaEquipo = razaEquipo;
-        this.presupuestoRestante = presupuestoRestante;
-
+    public Alineacion(Equipo equipo) {
+        this.iconoEquipo = equipo.getIcono();
+        this.presupuestoRestante = Equipo.PRESUPUESTO;
     }
 
     public void setPresupuestoRestante(int presupuestoRestante) {
@@ -32,16 +31,13 @@ public class Alineacion{
         this.reRolls = reRolls;
     }
 
-    public void setJugadoresAlineacion(LinkedHashMap<Jugador, Integer> jugadoresAlineacion) {
-        this.jugadoresAlineacion = jugadoresAlineacion;
-    }
 
     public String getNombreEquipo() {
         return nombreEquipo;
     }
 
-    public String getRazaEquipo() {
-        return razaEquipo;
+    public int getIconoEquipo() {
+        return iconoEquipo;
     }
 
     public int getPresupuestoRestante() {
@@ -52,8 +48,8 @@ public class Alineacion{
         return reRolls;
     }
 
-    public LinkedHashMap<Jugador, Integer> getJugadoresAlineacion() {
-        return jugadoresAlineacion;
+    public LinkedHashMap<Jugador, Integer> getJugadores() {
+        return jugadores;
     }
 
     public boolean isMedico() {
@@ -84,7 +80,27 @@ public class Alineacion{
         return ayudanteEntrenador;
     }
 
+
+
     public void setAyudanteEntrenador(int ayudanteEntrenador) {
         this.ayudanteEntrenador = ayudanteEntrenador;
+    }
+
+    public void addPlayer(Jugador jugador) {
+        if (!jugadores.containsKey(jugador)) {
+            jugadores.put(jugador, 0);
+        }
+        jugadores.put(jugador, jugadores.get(jugador) + 1);
+    }
+
+    public void deletePlayer(Jugador jugador) {
+        if (jugadores.get(jugador)==1) {
+            jugadores.remove(jugador);
+        }
+        jugadores.put(jugador, jugadores.get(jugador) - 1);
+    }
+
+    public int getNumPlayers(Jugador jugador) {
+        return jugadores.get(jugador);
     }
 }

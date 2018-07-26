@@ -21,8 +21,8 @@ public class Ogros extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Snotlings", 20000, 5, 1, 3, 5, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.AGILIDADFELINA.getNombre(), Habilidad.ECHARSEAUNLADO.getNombre(), Habilidad.ESCURRIDIZO.getNombre(), Habilidad.CANIJO.getNombre()))));
-            jugadores.add(new Jugador("Ogros", 140000, 5, 5, 2, 9, new HashSet<>(Arrays.asList(Habilidad.CABEZAHUECA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.LANZARCOMPAÑERO.getNombre()))));
+            jugadores.add(new Jugador("Snotlings", 20000, 5, 1, 3, 5, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.AGILIDADFELINA.getNombre(), Habilidad.ECHARSEAUNLADO.getNombre(), Habilidad.ESCURRIDIZO.getNombre(), Habilidad.CANIJO.getNombre())),16));
+            jugadores.add(new Jugador("Ogros", 140000, 5, 5, 2, 9, new HashSet<>(Arrays.asList(Habilidad.CABEZAHUECA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.LANZARCOMPAÑERO.getNombre())),6));
 
         }
         return jugadores;

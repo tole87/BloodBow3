@@ -20,8 +20,8 @@ public class Halflings extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
 
-            jugadores.add(new Jugador("Halflings", 30000, 5, 2, 3, 6, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.AGILIDADFELINA.getNombre(), Habilidad.ESCURRIDIZO.getNombre()))));
-            jugadores.add(new Jugador("Hombre Arbol", 120000, 2, 6, 1, 10, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.MANTENERSEFIRME.getNombre(), Habilidad.BRAZOFUERTE.getNombre(), Habilidad.ECHARRAICES.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.LANZARCOMPAÑERO.getNombre()))));
+            jugadores.add(new Jugador("Halflings", 30000, 5, 2, 3, 6, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.AGILIDADFELINA.getNombre(), Habilidad.ESCURRIDIZO.getNombre())),16));
+            jugadores.add(new Jugador("Hombre Arbol", 120000, 2, 6, 1, 10, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.MANTENERSEFIRME.getNombre(), Habilidad.BRAZOFUERTE.getNombre(), Habilidad.ECHARRAICES.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.LANZARCOMPAÑERO.getNombre())),2));
         }
         return jugadores;
     }

@@ -20,11 +20,11 @@ public class Skavens extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Linea", 50000, 7, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre()))));
-            jugadores.add(new Jugador("Corredor Alcantarilla", 70000, 7, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.PASAR.getNombre(), Habilidad.MANOSSEGURAS.getNombre()))));
-            jugadores.add(new Jugador("Lanzador", 80000, 9, 2, 4, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre()))));
-            jugadores.add(new Jugador("Blitzer", 90000, 7, 3, 3, 8, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getNombre()))));
-            jugadores.add(new Jugador("Troll", 150000, 6, 5, 2, 8, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.FURIA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.COLAPRENSIL.getNombre(), Habilidad.ANIMALSALVAJE.getNombre()))));
+            jugadores.add(new Jugador("Linea", 50000, 7, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),16));
+            jugadores.add(new Jugador("Corredor Alcantarilla", 70000, 7, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.PASAR.getNombre(), Habilidad.MANOSSEGURAS.getNombre())),4));
+            jugadores.add(new Jugador("Lanzador", 80000, 9, 2, 4, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre())),2));
+            jugadores.add(new Jugador("Blitzer", 90000, 7, 3, 3, 8, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getNombre())),2));
+            jugadores.add(new Jugador("Troll", 150000, 6, 5, 2, 8, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.FURIA.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.COLAPRENSIL.getNombre(), Habilidad.ANIMALSALVAJE.getNombre())),1));
 
         }
         return jugadores;
