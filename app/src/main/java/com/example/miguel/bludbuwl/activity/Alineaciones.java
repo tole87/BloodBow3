@@ -9,29 +9,30 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Alineaciones {
 
-    private static HashMap<String, Alineacion> alineaciones= new HashMap<>();
-    public static final String BLUDBULW_ALINEACION_CREADAS_JSON = "BludbulwAlineacionCreadas.json";
+    private static LinkedHashMap<String, Alineacion> alineaciones = new LinkedHashMap<>();
+    public static final String BLUDBULW_ALINEACION_CREADAS_JSON = "BludbulwAlineaciones.json";
     private static final Gson gson = new GsonBuilder().create();
 
-    public static HashMap<String, Alineacion> readFromFile(Context context) {
-
+    public static LinkedHashMap<String, Alineacion> readFromFile(Context context) {
 
         try (InputStream inputStream = context.openFileInput(BLUDBULW_ALINEACION_CREADAS_JSON)) {
 
-
             if (inputStream != null) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                alineaciones = (HashMap<String, Alineacion>) gson.fromJson(bufferedReader, HashMap.class);
+                alineaciones = (LinkedHashMap<String, Alineacion>) gson.fromJson(bufferedReader, HashMap.class);
             }
         } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
@@ -57,8 +58,19 @@ public class Alineaciones {
 //            path.mkdirs();
 //        }
 
-        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("bludbul.json", Context.MODE_PRIVATE))) {
-            outputStreamWriter.write(gson.toJson(alineaciones));
+        try (BufferedWriter bwriter = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "BludbulwAlineaciones.json"))))) {
+            bwriter.write(gson.toJson(alineaciones));
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    public static void borrarAlineacion (String nombreEquipo, Context context){
+        readFromFile(context);
+        alineaciones.remove(nombreEquipo);
+
+        try (BufferedWriter bwriter = new BufferedWriter (new OutputStreamWriter(new FileOutputStream(new File(Environment.getExternalStorageDirectory(), "BludbulwAlineaciones.json"))))) {
+            bwriter.write(gson.toJson(alineaciones));
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }

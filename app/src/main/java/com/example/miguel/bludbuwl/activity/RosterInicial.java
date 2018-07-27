@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,7 @@ import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.player.Jugador;
 import com.example.miguel.bludbuwl.team.Equipo;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -45,7 +40,6 @@ public class RosterInicial extends Activity {
         equipo.getJugadores();
 
         alineacion = new Alineacion(equipo);
-
 
 
         final ArrayList<Jugador> jugadores = new ArrayList<>(equipo.getJugadores());
@@ -72,8 +66,8 @@ public class RosterInicial extends Activity {
     }
 
     public void botonGuardar(View view) {
-        alineacion.setNombreEquipo(((EditText)findViewById(R.id.nombre_alineacion)).getText().toString());
-        Alineaciones.guardarAlineacion(alineacion,this);
+        alineacion.setNombreEquipo(((EditText) findViewById(R.id.nombre_alineacion)).getText().toString());
+        Alineaciones.guardarAlineacion(alineacion, this);
         startActivity(new Intent(this, GestionEquipoMenu.class));
     }
 
@@ -174,12 +168,12 @@ public class RosterInicial extends Activity {
 
         if (id == R.id.suma_hincha && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
-            alineacion.setFactorHinchas(alineacion.getFactorHinchas()+1);
+            alineacion.setFactorHinchas(alineacion.getFactorHinchas() + 1);
         }
 
         if (id == R.id.resta_hincha && alineacion.getFactorHinchas() > 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
-            alineacion.setFactorHinchas(alineacion.getFactorHinchas()-1);
+            alineacion.setFactorHinchas(alineacion.getFactorHinchas() - 1);
         }
         presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
         cantidadTextView.setText(String.valueOf(alineacion.getFactorHinchas()));
@@ -189,12 +183,12 @@ public class RosterInicial extends Activity {
     private void modificarAnimadora(int id, TextView cantidadTextView, TextView presupuestoTextView) {
         if (id == R.id.suma_animadora && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
-            alineacion.setAnimadoras(alineacion.getAnimadoras()+1);
+            alineacion.setAnimadoras(alineacion.getAnimadoras() + 1);
         }
 
         if (id == R.id.resta_animadora && alineacion.getAnimadoras() > 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
-            alineacion.setAnimadoras(alineacion.getAnimadoras()-1);
+            alineacion.setAnimadoras(alineacion.getAnimadoras() - 1);
         }
         presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
         cantidadTextView.setText(String.valueOf(alineacion.getAnimadoras()));
@@ -204,12 +198,12 @@ public class RosterInicial extends Activity {
     private void modificarAyudante(int id, TextView cantidadTextView, TextView presupuestoTextView) {
         if (id == R.id.suma_ayudante && (alineacion.getPresupuestoRestante() - 10000) >= 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 10000);
-            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador()+1);
+            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador() + 1);
         }
 
         if (id == R.id.resta_ayudante && alineacion.getAyudanteEntrenador() > 0) {
             alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 10000);
-            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador()-1);
+            alineacion.setAyudanteEntrenador(alineacion.getAyudanteEntrenador() - 1);
         }
         presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
         cantidadTextView.setText(String.valueOf(alineacion.getAyudanteEntrenador()));
@@ -220,13 +214,13 @@ public class RosterInicial extends Activity {
 
 
         if (id == R.id.suma_medico && (alineacion.getPresupuestoRestante() - 50000) >= 0 && !alineacion.isMedico()) {
-            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()-50000);
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - 50000);
             alineacion.setMedico(true);
             cantidadTextView.setText(String.valueOf(1));
         }
 
         if (id == R.id.resta_medico && alineacion.isMedico()) {
-            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()+50000);
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + 50000);
             alineacion.setMedico(false);
             cantidadTextView.setText(String.valueOf(0));
         }
@@ -237,18 +231,21 @@ public class RosterInicial extends Activity {
     private void modificarCantidadJugadores(int id, Jugador jugadorActual, TextView cantidadTextView, TextView presupuestoTextView, LinkedHashMap<Jugador, Integer> jugadoresAlineacion) {
 
         if ((id == R.id.suma_jugador && (alineacion.getPresupuestoRestante() - jugadorActual.getSalario()) >= 0 && Integer.parseInt(cantidadTextView.getText().toString()) < jugadorActual.getNumMaxPermitido())) {
-            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()- jugadorActual.getSalario());
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() - jugadorActual.getSalario());
             presupuestoTextView.setText(String.valueOf(Integer.parseInt(presupuestoTextView.getText().toString()) - jugadorActual.getSalario()));
             alineacion.addPlayer(jugadorActual);
         }
 
         if (id == R.id.resta_jugador && alineacion.existeJugador(jugadorActual)) {
-            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante()+ jugadorActual.getSalario());
+            alineacion.setPresupuestoRestante(alineacion.getPresupuestoRestante() + jugadorActual.getSalario());
             alineacion.deletePlayer(jugadorActual);
         }
         presupuestoTextView.setText(String.valueOf(alineacion.getPresupuestoRestante()));
-        if (alineacion.existeJugador(jugadorActual)){
-        cantidadTextView.setText(String.valueOf(alineacion.getNumPlayers(jugadorActual)));} else{cantidadTextView.setText(String.valueOf(0));}
+        if (alineacion.existeJugador(jugadorActual)) {
+            cantidadTextView.setText(String.valueOf(alineacion.getNumPlayers(jugadorActual)));
+        } else {
+            cantidadTextView.setText(String.valueOf(0));
+        }
 
     }
 
@@ -272,7 +269,6 @@ public class RosterInicial extends Activity {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
-
 
 
 }
