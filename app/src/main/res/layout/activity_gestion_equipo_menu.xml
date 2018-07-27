@@ -25,7 +25,8 @@
     <Button
         android:id="@+id/tus_equipos"
         android:text="@string/tus_equipos"
-        style="@style/Boton_Menu"/>
+        style="@style/Boton_Menu"
+        android:onClick="abrirEquiposCreados"/>
 
     <Button
         android:id="@+id/guia_equipos"

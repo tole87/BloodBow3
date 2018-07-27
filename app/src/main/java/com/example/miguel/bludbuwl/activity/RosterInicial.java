@@ -15,12 +15,13 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.player.Jugador;
 import com.example.miguel.bludbuwl.team.Equipo;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -30,6 +31,7 @@ import java.util.LinkedHashMap;
 import static com.example.miguel.bludbuwl.team.Equipo.PRESUPUESTO;
 
 public class RosterInicial extends Activity {
+
 
     private Alineacion alineacion;
 
@@ -44,7 +46,7 @@ public class RosterInicial extends Activity {
 
         alineacion = new Alineacion(equipo);
 
-        Toast.makeText(RosterInicial.this, equipo.getNombre(), Toast.LENGTH_LONG).show();
+
 
         final ArrayList<Jugador> jugadores = new ArrayList<>(equipo.getJugadores());
         RosterInicialAdapter itemsAdapter = new RosterInicialAdapter(this, jugadores);
@@ -71,7 +73,7 @@ public class RosterInicial extends Activity {
 
     public void botonGuardar(View view) {
         alineacion.setNombreEquipo(((EditText)findViewById(R.id.nombre_alineacion)).getText().toString());
-        guardarAlineacion(alineacion.toString(),this);
+        Alineaciones.guardarAlineacion(alineacion,this);
         startActivity(new Intent(this, GestionEquipoMenu.class));
     }
 
@@ -271,15 +273,6 @@ public class RosterInicial extends Activity {
         listView.setLayoutParams(params);
     }
 
-    private void guardarAlineacion(String data,Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("BludbulwAlineacionCreadas.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
+
 
 }

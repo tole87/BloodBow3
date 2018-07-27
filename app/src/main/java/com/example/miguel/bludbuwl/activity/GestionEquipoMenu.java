@@ -27,14 +27,11 @@ public class GestionEquipoMenu extends Activity {
     public void volverMenu(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
-
+    public void abrirEquiposCreados(View view) { startActivity(new Intent(this, MostrarAlineaciones.class)); }
     public void abrirGuiaEquipos(View view) {
         startActivity(new Intent(this, GuiaEquipos.class));
     }
-
-    public void abrirCreacionEquipos(View view) {
-        startActivity(new Intent(this, CreacionEquiposLista.class));
-    }
+    public void abrirCreacionEquipos(View view) { startActivity(new Intent(this, CreacionEquiposLista.class)); }
 
     public static class GuiaEquipoAdapter extends ArrayAdapter<Equipo> {
 

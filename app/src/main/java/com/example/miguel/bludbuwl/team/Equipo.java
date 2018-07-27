@@ -31,4 +31,9 @@ public abstract class Equipo implements Serializable {
     public int getPrecioReRoll() {
         return precioReRoll;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(icono);
+    }
 }

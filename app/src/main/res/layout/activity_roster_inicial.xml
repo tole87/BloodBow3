@@ -17,6 +17,7 @@
             android:orientation="horizontal">
 
             <EditText
+
                 android:id="@+id/nombre_alineacion"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"

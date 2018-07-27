@@ -100,4 +100,10 @@ public class Jugador{
 
         return numMaxPermitido;
     }
+
+    @Override
+    public String toString() {
+        return posicion;
+
+    }
 }

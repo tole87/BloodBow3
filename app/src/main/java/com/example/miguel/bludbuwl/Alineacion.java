@@ -114,7 +114,7 @@ public class Alineacion {
 
     @Override
     public String toString() {
-        return nombreEquipo + ',' + iconoEquipo + ',' + presupuestoRestante + ',' +  reRolls + ',' + jugadores + ',' + Medico + ',' +  factorHinchas + ',' + factorHinchas + ',' + animadoras + ',' + ayudanteEntrenador +'\n';
+        return nombreEquipo +','+ String.valueOf(iconoEquipo) + ',' + presupuestoRestante + ',' +  jugadores + ',' + reRolls + ',' + Medico + ',' +  factorHinchas + ',' + animadoras + ',' + ayudanteEntrenador +'\n';
 
     }
 }
