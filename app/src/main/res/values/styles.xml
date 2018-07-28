@@ -25,13 +25,14 @@
     </style>
 
     <style name="Text_View_Seleccion_Equipos_Creados">
-        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:layout_marginLeft">50dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_gravity">center</item>
 
 
     </style>

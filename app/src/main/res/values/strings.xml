@@ -5,7 +5,7 @@
     <string name="tus_equipos">Tus equipos</string>
     <string name="guia_equipos">Guia equipos</string>
     <string name="volver">Volver</string>
-    <string name="torneo">Torneo</string>
+    <string name="partida_rapida">Partida Rapida</string>
     <string name="humanos">Humanos</string>
     <string name="title_activity_gestion_equipo_menu">GestionEquipoMenu</string>
     <string name="title_activity_guia_equipos">GuiaEquipos</string>

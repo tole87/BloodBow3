@@ -4,4 +4,4 @@
     android:id="@+id/lista_mostrar_alineaciones_guardadas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.miguel.bludbuwl.activity.MostrarAlineaciones"/>
+    tools:context="com.example.miguel.bludbuwl.activity.MostrarAlineacionesActivity"/>

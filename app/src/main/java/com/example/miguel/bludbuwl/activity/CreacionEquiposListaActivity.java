@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import static com.example.miguel.bludbuwl.team.Equipos.getEquipos;
 
 
-public class CreacionEquiposLista extends Activity {
+public class CreacionEquiposListaActivity extends Activity {
 
 
     @Override
@@ -41,7 +41,7 @@ public class CreacionEquiposLista extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Equipo equipo = (Equipo) adapterView.getItemAtPosition(i);
-                Intent intent = new  Intent(getApplicationContext(),RosterInicial.class);
+                Intent intent = new  Intent(getApplicationContext(),RosterInicialActivity.class);
                 intent.putExtra("equipo",equipo);
                 startActivity(intent);
 

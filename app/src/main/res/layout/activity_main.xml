@@ -18,8 +18,9 @@
         android:onClick="abrirMenuEquipos"/>
 
     <Button
-        android:id="@+id/Torneo"
+        android:id="@+id/Partida_rapida"
         style="@style/Boton_Menu"
-        android:text="@string/torneo"/>
+        android:text="@string/partida_rapida"
+        android:onClick="abrirPartidaRapida"/>
 
 </LinearLayout>

@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.miguel.bludbuwl.MainActivity;
 import com.example.miguel.bludbuwl.R;
 
-public class GestionEquipoMenu extends Activity {
+public class GestionEquipoMenuActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,11 @@ public class GestionEquipoMenu extends Activity {
     public void volverMenu(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
-    public void abrirEquiposCreados(View view) { startActivity(new Intent(this, MostrarAlineaciones.class)); }
+    public void abrirEquiposCreados(View view) { startActivity(new Intent(this, MostrarAlineacionesActivity.class)); }
     public void abrirGuiaEquipos(View view) {
-        startActivity(new Intent(this, GuiaEquipos.class));
+        startActivity(new Intent(this, GuiaEquiposActivity.class));
     }
-    public void abrirCreacionEquipos(View view) { startActivity(new Intent(this, CreacionEquiposLista.class)); }
+    public void abrirCreacionEquipos(View view) { startActivity(new Intent(this, CreacionEquiposListaActivity.class)); }
 
 
 }

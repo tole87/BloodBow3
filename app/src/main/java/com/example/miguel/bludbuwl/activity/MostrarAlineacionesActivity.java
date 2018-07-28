@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.miguel.bludbuwl.Alineacion;
@@ -21,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MostrarAlineaciones extends AppCompatActivity {
+public class MostrarAlineacionesActivity extends AppCompatActivity {
 
 
 
@@ -31,7 +32,7 @@ public class MostrarAlineaciones extends AppCompatActivity {
         setContentView(R.layout.activity_equipos_creados);
 
 
-        LinkedHashMap<String,Alineacion> archivo = Alineaciones.readFromFile(this);
+        LinkedHashMap<String,Alineacion> archivo = AlineacionesActivity.readFromFile(this);
         List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
         MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this,list);
 
@@ -76,14 +77,44 @@ public class MostrarAlineaciones extends AppCompatActivity {
             viewHolder.tV1.setImageResource(entry.getValue().getIconoEquipo());
             viewHolder.tV2.setText(entry.getKey());
 
-            Button botonBorrarAlineacion = convertView.findViewById(R.id.borrar_alineacion);
-            botonBorrarAlineacion.setTag(position);
-            botonBorrarAlineacion.setOnClickListener((View v) -> {
-                Alineaciones.borrarAlineacion(entry.getKey(), MostrarAlineaciones.this);
-                finish();
-                startActivity(getIntent());
+            Button menuEquipoExistenteButton = convertView.findViewById(R.id.menu_equipo_existente);
+            menuEquipoExistenteButton.setTag(position);
+            menuEquipoExistenteButton.setOnClickListener((View v) -> {
+                PopupMenu popup = new PopupMenu(MostrarAlineacionesActivity.this, menuEquipoExistenteButton);
+                popup.getMenuInflater().inflate(R.menu.popup_menu_alineaciones_creadas, popup.getMenu());
+                popup.setOnMenuItemClickListener(item -> {
+
+                    switch (item.getItemId()) {
+                        case R.id.borrar_equipo_existente:
+                            AlineacionesActivity.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+                            finish();
+                            startActivity(getIntent());
+                            return true;
+                        case R.id.editar_alineacion:
+//                            Equipo equipo = (Equipo) entry.getValue();
+//                            Intent intent = new  Intent(getApplicationContext(),RosterInicialActivity.class);
+//                            intent.putExtra("equipo",equipo);
+//                            startActivity(intent);
+                            return true;
+                        default:
+
+                            return false;
+                    }
+
+
+
+
+                });
+
+                popup.show();//showing popup menu
+
+
+
             });
             return convertView;
+//            AlineacionesActivity.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+//                        finish();
+//                        startActivity(getIntent());
 
         }
     }

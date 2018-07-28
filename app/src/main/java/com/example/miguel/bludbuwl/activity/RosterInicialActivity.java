@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 
 import static com.example.miguel.bludbuwl.team.Equipo.PRESUPUESTO;
 
-public class RosterInicial extends Activity {
+public class RosterInicialActivity extends Activity {
 
 
     private Alineacion alineacion;
@@ -67,8 +67,8 @@ public class RosterInicial extends Activity {
 
     public void botonGuardar(View view) {
         alineacion.setNombreEquipo(((EditText) findViewById(R.id.nombre_alineacion)).getText().toString());
-        Alineaciones.guardarAlineacion(alineacion, this);
-        startActivity(new Intent(this, GestionEquipoMenu.class));
+        AlineacionesActivity.guardarAlineacion(alineacion, this);
+        startActivity(new Intent(this, GestionEquipoMenuActivity.class));
     }
 
     public class RosterInicialAdapter extends ArrayAdapter<Jugador> {

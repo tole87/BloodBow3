@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icono_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -17,21 +17,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.GestionEquipoMenu"
+            android:name=".activity.GestionEquipoMenuActivity"
             android:label="@string/title_activity_gestion_equipo_menu"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.GuiaEquipos"
+            android:name=".activity.GuiaEquiposActivity"
             android:label="@string/title_activity_guia_equipos"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity.CreacionEquiposLista"
+            android:name=".activity.CreacionEquiposListaActivity"
             android:label="@string/title_activity_creacion_equipos_lista" />
         <activity
-            android:name=".activity.RosterInicial"
+            android:name=".activity.RosterInicialActivity"
             android:label="@string/roster_inicial"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.MostrarAlineaciones"></activity>
+        <activity android:name=".activity.MostrarAlineacionesActivity" />
+        <activity android:name=".activity.ClimaActivity" />
+        <activity android:name=".activity.HinchasActivity" />
+        <activity android:name=".activity.EleccionEquiposPartidaActivity"></activity>
     </application>
 
 </manifest>

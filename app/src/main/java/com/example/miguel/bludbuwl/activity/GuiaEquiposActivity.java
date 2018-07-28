@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import static com.example.miguel.bludbuwl.team.Equipos.getEquipos;
 
-public class GuiaEquipos extends Activity {
+public class GuiaEquiposActivity extends Activity {
 
 
     @Override

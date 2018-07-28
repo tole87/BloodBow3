@@ -16,6 +16,7 @@
             android:id="@+id/icono_equipos_existente"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
             tools:background="@drawable/vampiros_logo" />
 
         <TextView
@@ -23,13 +24,7 @@
             style="@style/Text_View_Seleccion_Equipos_Creados"
             tools:text="nombre_Equipo" />
 
-        <Button
-            android:id="@+id/menu_equipo_existente"
-            android:layout_width="33dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/menu_tres_puntos" />
+
 
     </LinearLayout>
 

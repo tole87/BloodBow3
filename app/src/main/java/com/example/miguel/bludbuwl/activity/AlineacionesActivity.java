@@ -20,7 +20,7 @@ import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class Alineaciones {
+public class AlineacionesActivity {
 
     private static LinkedHashMap<String, Alineacion> alineaciones = new LinkedHashMap<>();
     public static final String BLUDBULW_ALINEACION_CREADAS_JSON = "BludbulwAlineaciones.json";
