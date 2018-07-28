@@ -76,12 +76,14 @@
        />
 
     <Button
+        android:id="@+id/boton_continuar_clima"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Continuar"
-        android:onClick="abrirTiradaHinchas"/>
+        android:onClick="abrirTiradaHinchas"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

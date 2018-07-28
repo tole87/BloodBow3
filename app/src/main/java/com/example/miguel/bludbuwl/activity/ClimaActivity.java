@@ -14,6 +14,7 @@ import com.example.miguel.bludbuwl.R;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static com.example.miguel.bludbuwl.R.id.boton_continuar_clima;
 import static com.example.miguel.bludbuwl.R.id.descripcion_clima;
 import static com.example.miguel.bludbuwl.R.id.nombre_clima;
 import static com.example.miguel.bludbuwl.R.id.tirada_clima;
@@ -39,9 +40,9 @@ public class ClimaActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                Toast.makeText(ClimaActivity.this, s, Toast.LENGTH_SHORT).show();
                 findViewById(nombre_clima).setVisibility(VISIBLE);
                 findViewById(descripcion_clima).setVisibility(VISIBLE);
+                findViewById(boton_continuar_clima).setVisibility(VISIBLE);
                 try {
                     if (s.equals("")) {
                         findViewById(nombre_clima).setVisibility(INVISIBLE);
@@ -80,7 +81,7 @@ public class ClimaActivity extends AppCompatActivity {
         });
     }
 
-    public void abrirTiradaHinchas(View view){
+    public void abrirTiradaHinchas(View view) {
         Intent i = new Intent(this, HinchasActivity.class);
         startActivity(i);
 

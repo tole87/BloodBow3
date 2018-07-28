@@ -1,6 +1,7 @@
 package com.example.miguel.bludbuwl.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
@@ -27,15 +29,52 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_equipos_partida);
 
-        LinkedHashMap<String,Alineacion> archivo = AlineacionesActivity.readFromFile(this);
+        LinkedHashMap<String, Alineacion> archivo = AlineacionesActivity.readFromFile(this);
         List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
-        MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this,list);
+        MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this, list);
 
         ListView listView = findViewById(R.id.lista_mostrar_alineaciones_guardadas);
 
         listView.setAdapter(itemsAdapter);
 
         setListViewHeightBasedOnChildren(listView);
+
+        findViewById(R.id.nombre_equipoA).setOnClickListener(v -> {
+            ((TextView) findViewById(R.id.nombre_equipoA)).setText("");
+            ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(0);
+        });
+        findViewById(R.id.nombre_equipoB).setOnClickListener(v -> {
+            ((TextView) findViewById(R.id.nombre_equipoB)).setText("");
+            ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(0);
+
+        });
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) adapterView.getItemAtPosition(i);
+
+            if (((TextView) findViewById(R.id.nombre_equipoB)).getText().equals("") && !((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("")) {
+                ((TextView) findViewById(R.id.nombre_equipoB)).setText(entry.getKey());
+                ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(entry.getValue().getIconoEquipo());
+            }
+
+            if (((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("")) {
+                ((TextView) findViewById(R.id.nombre_equipoA)).setText(entry.getKey());
+                ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(entry.getValue().getIconoEquipo());
+            }
+
+        });
+    }
+
+    public void botonComenzar(View view) {
+        if (!((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("") && !((TextView) findViewById(R.id.nombre_equipoB)).getText().equals("")) {
+            String equipoA = (String) ((TextView) findViewById(R.id.nombre_equipoA)).getText();
+            String equipoB = (String) ((TextView) findViewById(R.id.nombre_equipoB)).getText();
+            Intent intent = new Intent(getApplicationContext(), ClimaActivity.class);
+            intent.putExtra("equipoA", equipoA);
+            intent.putExtra("equipoA", equipoB);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "No has seleccionado dos equipos", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public class MostrarAlineacionesPartidaAdapter extends ArrayAdapter {
@@ -94,4 +133,6 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
+
+
 }

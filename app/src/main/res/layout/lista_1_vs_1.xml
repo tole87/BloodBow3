@@ -16,7 +16,6 @@
             android:id="@+id/icono_equipos_existente"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
             tools:background="@drawable/vampiros_logo" />
 
         <TextView

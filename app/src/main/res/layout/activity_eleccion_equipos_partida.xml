@@ -11,8 +11,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/icono_equipoA"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:background="@drawable/vampiros_logo"/>
+        <TextView
+            android:id="@+id/nombre_equipoA"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="4dp"
+            tools:text="@string/altos_elfos_nombre"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/vs_icono"/>
+        <TextView
+            android:id="@+id/nombre_equipoB"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="right"
+            tools:text="@string/altos_elfos_nombre"/>
+        <ImageView
+            android:id="@+id/icono_equipoB"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:background="@drawable/vampiros_logo"/>
+
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Comenzar"
+        android:onClick="botonComenzar"/>
     <ListView
         android:id="@+id/lista_mostrar_alineaciones_guardadas"
         android:layout_width="match_parent"
