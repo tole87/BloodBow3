@@ -1,9 +1,10 @@
 package com.example.miguel.bludbuwl;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class Partida {
+public class Partida implements Serializable {
 
     private List<Alineacion> alineaciones = Arrays.asList(new Alineacion[2]);
     private String clima;
@@ -16,10 +17,12 @@ public class Partida {
         return alineaciones;
     }
 
-    public void setAlineaciones(List<Alineacion> alineaciones) {
-        this.alineaciones = alineaciones;
+    public void setAlineaciones(Alineacion alineacion) {
+        alineaciones.add(alineacion);
     }
-
+    public void removeAlineaciones(Alineacion alineacion){
+        alineaciones.remove(alineacion);
+    }
     public String getClima() {
         return clima;
     }

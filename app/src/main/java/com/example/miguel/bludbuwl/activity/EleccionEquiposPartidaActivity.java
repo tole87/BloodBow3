@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.miguel.bludbuwl.Alineacion;
+import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class EleccionEquiposPartidaActivity extends AppCompatActivity {
+    Partida partidaEnCurso = new Partida();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,30 +45,32 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
         setListViewHeightBasedOnChildren(listView);
 
-        TextView equipoATextView = findViewById(R.id.nombre_equipoA);
 
-        equipoATextView.setOnClickListener(v -> {
-            equipoATextView.setText("");
+        findViewById(R.id.nombre_equipoA).setOnClickListener(v -> {
+            ((TextView)findViewById(R.id.nombre_equipoA)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(0);
+            partidaEnCurso.removeAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoA)).getText()));
         });
-        TextView equipoBTextView = findViewById(R.id.nombre_equipoB);
-        equipoBTextView.setOnClickListener(v -> {
-            equipoBTextView.setText("");
+        findViewById(R.id.nombre_equipoB).setOnClickListener(v -> {
+            ((TextView)findViewById(R.id.nombre_equipoB)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(0);
+            partidaEnCurso.removeAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoB)).getText()));
 
         });
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            if (isNotBlank(equipoATextView.getText()) && isNotBlank(equipoBTextView.getText())) {
+            if (isNotBlank(((TextView)findViewById(R.id.nombre_equipoA)).getText()) && isNotBlank(((TextView)findViewById(R.id.nombre_equipoB)).getText())) {
                 return;
             }
             int equipo = R.id.nombre_equipoB;
             int icono = R.id.icono_equipoB;
 
             Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) adapterView.getItemAtPosition(i);
-            if (isBlank(equipoATextView.getText())) {
+            if (isBlank(((TextView)findViewById(R.id.nombre_equipoA)).getText())) {
+                partidaEnCurso.setAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoA)).getText()));
                 equipo = R.id.nombre_equipoA;
                 icono = R.id.icono_equipoA;
             }
+            partidaEnCurso.setAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoB)).getText()));
             ((TextView) findViewById(equipo)).setText(entry.getValue().getNombreEquipo());
             ((ImageView) findViewById(icono)).setImageResource(entry.getValue().getIconoEquipo());
         });
@@ -74,11 +78,8 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
     public void botonComenzar(View view) {
         if (!((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("") && !((TextView) findViewById(R.id.nombre_equipoB)).getText().equals("")) {
-            String equipoA = (String) ((TextView) findViewById(R.id.nombre_equipoA)).getText();
-            String equipoB = (String) ((TextView) findViewById(R.id.nombre_equipoB)).getText();
             Intent intent = new Intent(getApplicationContext(), ClimaActivity.class);
-            intent.putExtra("equipoA", equipoA);
-            intent.putExtra("equipoA", equipoB);
+            intent.putExtra("partida", partidaEnCurso);
             startActivity(intent);
         } else {
             Toast.makeText(this, "No has seleccionado dos equipos", Toast.LENGTH_SHORT).show();
