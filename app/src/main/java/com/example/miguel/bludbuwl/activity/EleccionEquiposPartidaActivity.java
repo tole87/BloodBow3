@@ -22,6 +22,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
     @Override
@@ -30,6 +33,7 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_eleccion_equipos_partida);
 
         LinkedHashMap<String, Alineacion> archivo = AlineacionesActivity.readFromFile(this);
+
         List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
         MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this, list);
 
@@ -39,28 +43,32 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
         setListViewHeightBasedOnChildren(listView);
 
-        findViewById(R.id.nombre_equipoA).setOnClickListener(v -> {
-            ((TextView) findViewById(R.id.nombre_equipoA)).setText("");
+        TextView equipoATextView = findViewById(R.id.nombre_equipoA);
+
+        equipoATextView.setOnClickListener(v -> {
+            equipoATextView.setText("");
             ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(0);
         });
-        findViewById(R.id.nombre_equipoB).setOnClickListener(v -> {
-            ((TextView) findViewById(R.id.nombre_equipoB)).setText("");
+        TextView equipoBTextView = findViewById(R.id.nombre_equipoB);
+        equipoBTextView.setOnClickListener(v -> {
+            equipoBTextView.setText("");
             ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(0);
 
         });
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (isNotBlank(equipoATextView.getText()) && isNotBlank(equipoBTextView.getText())) {
+                return;
+            }
+            int equipo = R.id.nombre_equipoB;
+            int icono = R.id.icono_equipoB;
+
             Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) adapterView.getItemAtPosition(i);
-
-            if (((TextView) findViewById(R.id.nombre_equipoB)).getText().equals("") && !((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("")) {
-                ((TextView) findViewById(R.id.nombre_equipoB)).setText(entry.getKey());
-                ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(entry.getValue().getIconoEquipo());
+            if (isBlank(equipoATextView.getText())) {
+                equipo = R.id.nombre_equipoA;
+                icono = R.id.icono_equipoA;
             }
-
-            if (((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("")) {
-                ((TextView) findViewById(R.id.nombre_equipoA)).setText(entry.getKey());
-                ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(entry.getValue().getIconoEquipo());
-            }
-
+            ((TextView) findViewById(equipo)).setText(entry.getValue().getNombreEquipo());
+            ((ImageView) findViewById(icono)).setImageResource(entry.getValue().getIconoEquipo());
         });
     }
 
@@ -111,6 +119,7 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
             return convertView;
 
         }
+
     }
 
     public static void setListViewHeightBasedOnChildren(ListView listView) {
