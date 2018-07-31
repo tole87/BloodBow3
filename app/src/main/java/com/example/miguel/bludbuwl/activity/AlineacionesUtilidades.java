@@ -2,6 +2,7 @@ package com.example.miguel.bludbuwl.activity;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.miguel.bludbuwl.Alineacion;
 import com.google.gson.Gson;
@@ -15,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
-public class AlineacionesActivity {
+public class AlineacionesUtilidades {
 
     private static LinkedHashMap<String, Alineacion> alineaciones = new LinkedHashMap<>();
     public static final String BLUDBULW_ALINEACION_CREADAS_JSON = "BludbulwAlineaciones.json";
@@ -62,6 +63,10 @@ public class AlineacionesActivity {
         } catch (IOException e) {
             Log.e("Exception", "File write failed: ", e);
         }
+    }
+
+    public static Alineacion obtenerAlineacionPorNombre(String nombreAlineacion){
+        return alineaciones.get(nombreAlineacion);
     }
 
 }

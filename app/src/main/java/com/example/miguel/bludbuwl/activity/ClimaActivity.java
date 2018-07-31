@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
+import com.example.miguel.bludbuwl.reglas.Clima;
+import com.example.miguel.bludbuwl.reglas.PatadaInicial;
+import com.example.miguel.bludbuwl.team.Equipo;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -30,7 +35,7 @@ public class ClimaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clima);
-
+        Partida partida = (Partida) getIntent().getSerializableExtra("partida");
 
         ((EditText) findViewById(tirada_clima)).addTextChangedListener(new TextWatcher() {
             @Override
@@ -40,33 +45,31 @@ public class ClimaActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 findViewById(nombre_clima).setVisibility(VISIBLE);
                 findViewById(descripcion_clima).setVisibility(VISIBLE);
                 findViewById(boton_continuar_clima).setVisibility(VISIBLE);
                 try {
-                    if (s.equals("")) {
+                    int numeroIntroducido = Integer.parseInt(((EditText) findViewById(tirada_clima)).getText().toString());
+                    if (numeroIntroducido<2 || numeroIntroducido>13 || ((EditText) findViewById(tirada_clima)).getText().toString().equals("")) {
                         findViewById(nombre_clima).setVisibility(INVISIBLE);
                         findViewById(descripcion_clima).setVisibility(INVISIBLE);
+                        findViewById(boton_continuar_clima).setVisibility(INVISIBLE);
                     }
-                    if (Integer.parseInt(s.toString()) == 2) {
-                        ((TextView) findViewById(nombre_clima)).setText(CALOR.getNombreClima());
-                        ((TextView) findViewById(descripcion_clima)).setText(CALOR.getDescripcionClima());
+                    if (numeroIntroducido == 2) {
+                        insertarValoresPatada(CALOR);
                     }
-                    if (Integer.parseInt(s.toString()) == 3) {
-                        ((TextView) findViewById(nombre_clima)).setText(SOLEADO.getNombreClima());
-                        ((TextView) findViewById(descripcion_clima)).setText(SOLEADO.getDescripcionClima());
+                    if (numeroIntroducido == 3) {
+                        insertarValoresPatada(SOLEADO);
                     }
-                    if (Integer.parseInt(s.toString()) > 3 && Integer.parseInt(s.toString()) < 11) {
-                        ((TextView) findViewById(nombre_clima)).setText(PERFECTO.getNombreClima());
-                        ((TextView) findViewById(descripcion_clima)).setText(PERFECTO.getDescripcionClima());
+                    if (numeroIntroducido > 3 && numeroIntroducido < 11) {
+                        insertarValoresPatada(PERFECTO);
                     }
-                    if (Integer.parseInt(s.toString()) == 11) {
-                        ((TextView) findViewById(nombre_clima)).setText(LLUVIOSO.getNombreClima());
-                        ((TextView) findViewById(descripcion_clima)).setText(LLUVIOSO.getDescripcionClima());
+                    if (numeroIntroducido == 11) {
+                        insertarValoresPatada(LLUVIOSO);
                     }
-                    if (Integer.parseInt(s.toString()) == 12) {
-                        ((TextView) findViewById(nombre_clima)).setText(VENTISCA.getNombreClima());
-                        ((TextView) findViewById(descripcion_clima)).setText(VENTISCA.getDescripcionClima());
+                    if (numeroIntroducido == 12) {
+                        insertarValoresPatada(VENTISCA);
                     }
                 } catch (Exception e) {
                     Log.e("Exception", "File write failed: " + e.toString());
@@ -82,10 +85,15 @@ public class ClimaActivity extends AppCompatActivity {
     }
 
     public void abrirTiradaHinchas(View view) {
-        Intent i = new Intent(this, HinchasActivity.class);
+        Intent i = new Intent(this, PatadaInicialActivity.class);
         startActivity(i);
 
 
+    }
+
+    private void insertarValoresPatada(Clima clima){
+        ((TextView) findViewById(nombre_clima)).setText(clima.getNombreClima());
+        ((TextView) findViewById(descripcion_clima)).setText(clima.getDescripcionClima());
     }
 }
 

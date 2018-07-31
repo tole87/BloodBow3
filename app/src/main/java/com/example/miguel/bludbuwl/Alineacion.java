@@ -11,7 +11,7 @@ public class Alineacion {
     private int iconoEquipo;
     private int presupuestoRestante;
     private int reRolls;
-    private final LinkedHashMap<Jugador, Integer> jugadores = new LinkedHashMap<>();
+    private final LinkedHashMap<String, Integer> jugadores = new LinkedHashMap<>();
     private boolean Medico;
     private int factorHinchas;
     private int animadoras;
@@ -52,7 +52,7 @@ public class Alineacion {
         return reRolls;
     }
 
-    public LinkedHashMap<Jugador, Integer> getJugadores() {
+    public LinkedHashMap<String, Integer> getJugadores() {
         return jugadores;
     }
 
@@ -85,36 +85,37 @@ public class Alineacion {
     }
 
 
-
     public void setAyudanteEntrenador(int ayudanteEntrenador) {
         this.ayudanteEntrenador = ayudanteEntrenador;
     }
 
     public void addPlayer(Jugador jugador) {
-        if (!jugadores.containsKey(jugador)) {
-            jugadores.put(jugador, 1);
-        }else{
-        jugadores.put(jugador, jugadores.get(jugador) + 1);}
+        if (!jugadores.containsKey(jugador.getPosicion())) {
+            jugadores.put(jugador.getPosicion(), 1);
+        } else {
+            jugadores.put(jugador.getPosicion(), jugadores.get(jugador.getPosicion()) + 1);
+        }
     }
 
     public void deletePlayer(Jugador jugador) {
-        if (jugadores.get(jugador)==1) {
-            jugadores.remove(jugador);
-        }else{
-        jugadores.put(jugador, jugadores.get(jugador) - 1);}
+        if (jugadores.get(jugador.getPosicion()) == 1) {
+            jugadores.remove(jugador.getPosicion());
+        } else {
+            jugadores.put(jugador.getPosicion(), jugadores.get(jugador.getPosicion()) - 1);
+        }
     }
 
     public int getNumPlayers(Jugador jugador) {
-        return jugadores.get(jugador);
+        return jugadores.get(jugador.getPosicion());
     }
 
     public boolean existeJugador(Jugador jugador) {
-        return jugadores.containsKey(jugador);
+        return jugadores.containsKey(jugador.getPosicion());
     }
 
     @Override
     public String toString() {
-        return nombreEquipo +','+ String.valueOf(iconoEquipo) + ',' + presupuestoRestante + ',' +  jugadores + ',' + reRolls + ',' + Medico + ',' +  factorHinchas + ',' + animadoras + ',' + ayudanteEntrenador +'\n';
+        return nombreEquipo + ',' + String.valueOf(iconoEquipo) + ',' + presupuestoRestante + ',' + jugadores + ',' + reRolls + ',' + Medico + ',' + factorHinchas + ',' + animadoras + ',' + ayudanteEntrenador + '\n';
 
     }
 }

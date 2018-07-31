@@ -32,7 +32,8 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_equipos_creados);
 
 
-        LinkedHashMap<String,Alineacion> archivo = AlineacionesActivity.readFromFile(this);
+        LinkedHashMap<String,Alineacion> archivo = AlineacionesUtilidades.readFromFile(this);
+
         List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
         MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this,list);
 
@@ -86,7 +87,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.borrar_equipo_existente:
-                            AlineacionesActivity.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+                            AlineacionesUtilidades.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
                             finish();
                             startActivity(getIntent());
                             return true;
@@ -112,7 +113,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
             });
             return convertView;
-//            AlineacionesActivity.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+//            AlineacionesUtilidades.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
 //                        finish();
 //                        startActivity(getIntent());
 

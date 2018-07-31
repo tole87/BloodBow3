@@ -4,24 +4,39 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class Partida implements Serializable {
+public class Partida implements Serializable{
 
-    private List<Alineacion> alineaciones = Arrays.asList(new Alineacion[2]);
+    private String equipoA;
+
+    private String equipoB;
     private String clima;
     private int hinchas;
 
     public Partida() {
     }
 
-    public List<Alineacion> getAlineaciones() {
-        return alineaciones;
+    public String getEquipoA() {
+        return equipoA;
     }
 
-    public void setAlineaciones(Alineacion alineacion) {
-        alineaciones.add(alineacion);
+    public void setEquipoA(String equipoA) {
+        this.equipoA = equipoA;
     }
-    public void removeAlineaciones(Alineacion alineacion){
-        alineaciones.remove(alineacion);
+
+    public String getEquipoB() {
+        return equipoB;
+    }
+
+    public void setEquipoB(String equipoB) {
+        this.equipoB = equipoB;
+    }
+
+    public void removeEquipoA(){
+        this.equipoA = "";
+    }
+
+    public void removeEquipoB(){
+        this.equipoB = "";
     }
     public String getClima() {
         return clima;

@@ -67,7 +67,7 @@ public class RosterInicialActivity extends Activity {
 
     public void botonGuardar(View view) {
         alineacion.setNombreEquipo(((EditText) findViewById(R.id.nombre_alineacion)).getText().toString());
-        AlineacionesActivity.guardarAlineacion(alineacion, this);
+        AlineacionesUtilidades.guardarAlineacion(alineacion, this);
         startActivity(new Intent(this, GestionEquipoMenuActivity.class));
     }
 

@@ -34,7 +34,7 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_equipos_partida);
 
-        LinkedHashMap<String, Alineacion> archivo = AlineacionesActivity.readFromFile(this);
+        LinkedHashMap<String, Alineacion> archivo = AlineacionesUtilidades.readFromFile(this);
 
         List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
         MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this, list);
@@ -49,12 +49,12 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         findViewById(R.id.nombre_equipoA).setOnClickListener(v -> {
             ((TextView)findViewById(R.id.nombre_equipoA)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(0);
-            partidaEnCurso.removeAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoA)).getText()));
+            partidaEnCurso.removeEquipoA();
         });
         findViewById(R.id.nombre_equipoB).setOnClickListener(v -> {
             ((TextView)findViewById(R.id.nombre_equipoB)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(0);
-            partidaEnCurso.removeAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoB)).getText()));
+            partidaEnCurso.removeEquipoB();
 
         });
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -66,11 +66,11 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
             Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) adapterView.getItemAtPosition(i);
             if (isBlank(((TextView)findViewById(R.id.nombre_equipoA)).getText())) {
-                partidaEnCurso.setAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoA)).getText()));
+                partidaEnCurso.setEquipoA(entry.getValue().getNombreEquipo());
                 equipo = R.id.nombre_equipoA;
                 icono = R.id.icono_equipoA;
             }
-            partidaEnCurso.setAlineaciones(archivo.get(((TextView)findViewById(R.id.nombre_equipoB)).getText()));
+            partidaEnCurso.setEquipoB(entry.getValue().getNombreEquipo());
             ((TextView) findViewById(equipo)).setText(entry.getValue().getNombreEquipo());
             ((ImageView) findViewById(icono)).setImageResource(entry.getValue().getIconoEquipo());
         });

@@ -27,5 +27,13 @@ public class AltosElfos extends Equipo{
         }
         return jugadores;
     }
+
+    public Jugador obtenerJugadorPorPosicion(String posicion){
+        return getJugadores()
+                .stream()
+                .filter(jugador -> jugador.getPosicion().equalsIgnoreCase(posicion))
+                .findFirst()
+                .get();
+    }
 }
 
