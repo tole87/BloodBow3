@@ -19,10 +19,11 @@ import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.leerArchivo;
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.obtenerAlineacionPorNombre;
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.obtenerAlineaciones;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
@@ -34,10 +35,8 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eleccion_equipos_partida);
 
-        LinkedHashMap<String, Alineacion> archivo = AlineacionesUtilidades.readFromFile(this);
-
-        List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
-        MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this, list);
+        leerArchivo(this);
+        MostrarAlineacionesPartidaAdapter itemsAdapter = new MostrarAlineacionesPartidaAdapter(this, new ArrayList<>(obtenerAlineaciones().values()));
 
         ListView listView = findViewById(R.id.lista_mostrar_alineaciones_guardadas);
 
@@ -45,34 +44,47 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
         setListViewHeightBasedOnChildren(listView);
 
-
         findViewById(R.id.nombre_equipoA).setOnClickListener(v -> {
-            ((TextView)findViewById(R.id.nombre_equipoA)).setText("");
+            if (isBlank(((TextView) findViewById(R.id.nombre_equipoA)).getText())) {
+                return;
+            }
+            itemsAdapter.add(obtenerAlineacionPorNombre(((TextView) findViewById(R.id.nombre_equipoA)).getText().toString()));
+            ((TextView) findViewById(R.id.nombre_equipoA)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoA)).setImageResource(0);
             partidaEnCurso.removeEquipoA();
+            itemsAdapter.notifyDataSetChanged();
+
         });
         findViewById(R.id.nombre_equipoB).setOnClickListener(v -> {
-            ((TextView)findViewById(R.id.nombre_equipoB)).setText("");
+            if (isBlank(((TextView) findViewById(R.id.nombre_equipoB)).getText())) {
+                return;
+            }
+            itemsAdapter.add(obtenerAlineacionPorNombre(((TextView) findViewById(R.id.nombre_equipoB)).getText().toString()));
+            ((TextView) findViewById(R.id.nombre_equipoB)).setText("");
             ((ImageView) findViewById(R.id.icono_equipoB)).setImageResource(0);
             partidaEnCurso.removeEquipoB();
+            itemsAdapter.notifyDataSetChanged();
 
         });
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            if (isNotBlank(((TextView)findViewById(R.id.nombre_equipoA)).getText()) && isNotBlank(((TextView)findViewById(R.id.nombre_equipoB)).getText())) {
+            if (isNotBlank(((TextView) findViewById(R.id.nombre_equipoA)).getText()) && isNotBlank(((TextView) findViewById(R.id.nombre_equipoB)).getText())) {
                 return;
             }
             int equipo = R.id.nombre_equipoB;
             int icono = R.id.icono_equipoB;
 
-            Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) adapterView.getItemAtPosition(i);
-            if (isBlank(((TextView)findViewById(R.id.nombre_equipoA)).getText())) {
-                partidaEnCurso.setEquipoA(entry.getValue().getNombreEquipo());
+            Alineacion alineacion = (Alineacion) adapterView.getItemAtPosition(i);
+            if (isBlank(((TextView) findViewById(R.id.nombre_equipoA)).getText())) {
+                partidaEnCurso.setEquipoA(alineacion.getNombreEquipo());
                 equipo = R.id.nombre_equipoA;
                 icono = R.id.icono_equipoA;
             }
-            partidaEnCurso.setEquipoB(entry.getValue().getNombreEquipo());
-            ((TextView) findViewById(equipo)).setText(entry.getValue().getNombreEquipo());
-            ((ImageView) findViewById(icono)).setImageResource(entry.getValue().getIconoEquipo());
+            partidaEnCurso.setEquipoB(alineacion.getNombreEquipo());
+            ((TextView) findViewById(equipo)).setText(alineacion.getNombreEquipo());
+            ((ImageView) findViewById(icono)).setImageResource(alineacion.getIconoEquipo());
+            itemsAdapter.remove(alineacion);
+
+            itemsAdapter.notifyDataSetChanged();
         });
     }
 
@@ -86,14 +98,14 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
         }
     }
 
-    public class MostrarAlineacionesPartidaAdapter extends ArrayAdapter {
+    public class MostrarAlineacionesPartidaAdapter extends ArrayAdapter<Alineacion> {
 
         private class ViewHolder {
             ImageView tV1;
             TextView tV2;
         }
 
-        public MostrarAlineacionesPartidaAdapter(Context context, List<Map.Entry<String, Alineacion>> alineaciones) {
+        public MostrarAlineacionesPartidaAdapter(Context context, List<Alineacion> alineaciones) {
             super(context, 0, alineaciones);
         }
 
@@ -108,13 +120,13 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
                 viewHolder.tV1 = convertView.findViewById(R.id.icono_equipos_existente);
                 viewHolder.tV2 = convertView.findViewById(R.id.nombre_equipo_existente);
                 convertView.setTag(viewHolder);
-            } else
+            } else {
                 viewHolder = (EleccionEquiposPartidaActivity.MostrarAlineacionesPartidaAdapter.ViewHolder) convertView.getTag();
+            }
+            Alineacion alineacion = (Alineacion) this.getItem(position);
 
-            Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) this.getItem(position);
-
-            viewHolder.tV1.setImageResource(entry.getValue().getIconoEquipo());
-            viewHolder.tV2.setText(entry.getKey());
+            viewHolder.tV1.setImageResource(alineacion.getIconoEquipo());
+            viewHolder.tV2.setText(alineacion.getNombreEquipo());
 
 
             return convertView;

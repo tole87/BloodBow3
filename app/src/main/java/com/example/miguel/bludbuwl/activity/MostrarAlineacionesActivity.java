@@ -22,6 +22,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.*;
+
 public class MostrarAlineacionesActivity extends AppCompatActivity {
 
 
@@ -31,11 +33,8 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipos_creados);
 
-
-        LinkedHashMap<String,Alineacion> archivo = AlineacionesUtilidades.readFromFile(this);
-
-        List<Map.Entry<String, Alineacion>> list = new ArrayList(archivo.entrySet());
-        MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this,list);
+        leerArchivo(this);
+        MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this,new ArrayList<>(obtenerAlineaciones().values()));
 
         ListView listView = findViewById(R.id.lista_mostrar_alineaciones_guardadas);
 
@@ -47,7 +46,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
 
 
-    public class MostrarAlineacionesAdapter extends ArrayAdapter{
+    public class MostrarAlineacionesAdapter extends ArrayAdapter <Alineacion>{
 
         private class ViewHolder {
             ImageView tV1;
@@ -55,7 +54,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
             Button tV3;
         }
 
-        public MostrarAlineacionesAdapter(Context context, List<Map.Entry<String, Alineacion>> alineaciones) {
+        public MostrarAlineacionesAdapter(Context context, List<Alineacion> alineaciones) {
             super(context, 0, alineaciones);
         }
 
@@ -87,7 +86,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.borrar_equipo_existente:
-                            AlineacionesUtilidades.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+                            borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
                             finish();
                             startActivity(getIntent());
                             return true;

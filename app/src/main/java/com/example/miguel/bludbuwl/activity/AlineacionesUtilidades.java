@@ -2,7 +2,6 @@ package com.example.miguel.bludbuwl.activity;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.miguel.bludbuwl.Alineacion;
 import com.google.gson.Gson;
@@ -22,10 +21,10 @@ public class AlineacionesUtilidades {
     public static final String BLUDBULW_ALINEACION_CREADAS_JSON = "BludbulwAlineaciones.json";
     private static final Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 
-    public static LinkedHashMap<String, Alineacion> readFromFile(Context context) {
+    public static void leerArchivo(Context context) {
 
         if (!new File(context.getFilesDir() + "/" + BLUDBULW_ALINEACION_CREADAS_JSON).exists()) {
-            return alineaciones;
+            return ;
         }
         try (FileInputStream inputStream = context.openFileInput(BLUDBULW_ALINEACION_CREADAS_JSON)) {
             int size = inputStream.available();
@@ -41,18 +40,18 @@ public class AlineacionesUtilidades {
             Log.e("login activity", "Can not read file: ", e);
         }
 
-        return alineaciones;
+
     }
 
     public static void guardarAlineacion(Alineacion alineacion, Context context) {
 
-        readFromFile(context);
+        leerArchivo(context);
         alineaciones.put(alineacion.getNombreEquipo(), alineacion);
         escribirAlineaciones(context);
     }
 
     public static void borrarAlineacion(String nombreEquipo, Context context) {
-        readFromFile(context);
+        leerArchivo(context);
         alineaciones.remove(nombreEquipo);
         escribirAlineaciones(context);
     }
@@ -67,6 +66,9 @@ public class AlineacionesUtilidades {
 
     public static Alineacion obtenerAlineacionPorNombre(String nombreAlineacion){
         return alineaciones.get(nombreAlineacion);
+    }
+    public static LinkedHashMap<String, Alineacion> obtenerAlineaciones(){
+        return alineaciones;
     }
 
 }
