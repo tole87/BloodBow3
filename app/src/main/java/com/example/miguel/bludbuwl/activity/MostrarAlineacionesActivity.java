@@ -72,10 +72,10 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
             } else
                 viewHolder = (ViewHolder) convertView.getTag();
 
-            Map.Entry<String, Alineacion> entry = (Map.Entry<String, Alineacion>) this.getItem(position);
+            Alineacion alineacion = (Alineacion) this.getItem(position);
 
-            viewHolder.tV1.setImageResource(entry.getValue().getIconoEquipo());
-            viewHolder.tV2.setText(entry.getKey());
+            viewHolder.tV1.setImageResource(alineacion.getIconoEquipo());
+            viewHolder.tV2.setText(alineacion.getNombreEquipo());
 
             Button menuEquipoExistenteButton = convertView.findViewById(R.id.menu_equipo_existente);
             menuEquipoExistenteButton.setTag(position);
@@ -86,7 +86,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.borrar_equipo_existente:
-                            borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
+                            borrarAlineacion(alineacion.getNombreEquipo(), MostrarAlineacionesActivity.this);
                             finish();
                             startActivity(getIntent());
                             return true;
