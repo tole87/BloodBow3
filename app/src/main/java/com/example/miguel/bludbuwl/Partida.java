@@ -1,8 +1,6 @@
 package com.example.miguel.bludbuwl;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
 public class Partida implements Serializable{
 
@@ -10,7 +8,7 @@ public class Partida implements Serializable{
 
     private String equipoB;
     private String clima;
-    private int hinchas;
+    private String patadaInicial;
 
     public Partida() {
     }
@@ -46,11 +44,11 @@ public class Partida implements Serializable{
         this.clima = clima;
     }
 
-    public int getHinchas() {
-        return hinchas;
+    public String getPatadaInicial() {
+        return patadaInicial;
     }
 
-    public void setHinchas(int hinchas) {
-        this.hinchas = hinchas;
+    public void setPatadaInicial(String patadaInicial) {
+        this.patadaInicial = patadaInicial;
     }
 }
