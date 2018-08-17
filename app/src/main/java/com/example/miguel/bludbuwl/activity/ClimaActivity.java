@@ -120,6 +120,7 @@ public class ClimaActivity extends AppCompatActivity {
     public static int randomDiceValue() {
         return RANDOM.nextInt(6) + 1;
     }
+
     public void abrirTiradaHinchas(View view) {
         Intent i = new Intent(this, PatadaInicialActivity.class);
         i.putExtra("partida", partidaEnCurso);
