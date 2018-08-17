@@ -40,4 +40,11 @@ public class Equipos {
         return equipos;
     }
 
+    public static Equipo obtenerEquipoPorNombre(String nombre){
+        return getEquipos()
+                .stream()
+                .filter(equipo -> String.valueOf(equipo.getNombre()).equalsIgnoreCase(nombre))
+                .findFirst()
+                .get();
+    }
 }

@@ -16,6 +16,8 @@ public abstract class Equipo implements Serializable {
 
     public abstract HashSet<Jugador> getJugadores();
 
+    public abstract Jugador obtenerJugadorPorPosicion(String posicion);
+
     public int getFicha() {
         return ficha;
     }

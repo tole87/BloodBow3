@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.miguel.bludbuwl.activity.GestionPartido">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#212121" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Posicion"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="MO" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="FU" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="AG" />
+
+            <TextView
+                style="@style/Text_View_Roster_inicial"
+                android:text="AR" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Hab."
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#212121" />
+
+        <ListView
+            android:id="@+id/lista_fragment_equipo_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedScrolling" />
+
+
+    </LinearLayout>
+</ScrollView>
+

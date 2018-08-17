@@ -3,23 +3,25 @@ package com.example.miguel.bludbuwl.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.reglas.Clima;
 
-import static android.view.View.INVISIBLE;
+import java.util.Random;
+
+import static android.view.View.*;
 import static android.view.View.VISIBLE;
 import static com.example.miguel.bludbuwl.R.id.boton_continuar_clima;
 import static com.example.miguel.bludbuwl.R.id.descripcion_clima;
 import static com.example.miguel.bludbuwl.R.id.nombre_clima;
-import static com.example.miguel.bludbuwl.R.id.tirada_clima;
 import static com.example.miguel.bludbuwl.reglas.Clima.CALOR;
 import static com.example.miguel.bludbuwl.reglas.Clima.LLUVIOSO;
 import static com.example.miguel.bludbuwl.reglas.Clima.PERFECTO;
@@ -29,65 +31,95 @@ import static com.example.miguel.bludbuwl.reglas.Clima.VENTISCA;
 public class ClimaActivity extends AppCompatActivity {
 
     Partida partidaEnCurso;
+    public static final Random RANDOM = new Random();
+    private Button rollDices;
+    private ImageView imageView1, imageView2;
+    private int contadorDado = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clima);
 
+
+        rollDices = findViewById(R.id.tirar_dados);
+        imageView1 = findViewById(R.id.dado_uno);
+        imageView2 = findViewById(R.id.dado_dos);
+
         partidaEnCurso = (Partida) getIntent().getSerializableExtra("partida");
-        ((EditText) findViewById(tirada_clima)).addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                findViewById(nombre_clima).setVisibility(VISIBLE);
-                findViewById(descripcion_clima).setVisibility(VISIBLE);
-                findViewById(boton_continuar_clima).setVisibility(VISIBLE);
-                try {
-                    int numeroIntroducido = Integer.parseInt(((EditText) findViewById(tirada_clima)).getText().toString());
-                    if (numeroIntroducido < 2 || numeroIntroducido > 13 || ((EditText) findViewById(tirada_clima)).getText().toString().equals("")) {
-                        findViewById(nombre_clima).setVisibility(INVISIBLE);
-                        findViewById(descripcion_clima).setVisibility(INVISIBLE);
-                        findViewById(boton_continuar_clima).setVisibility(INVISIBLE);
-                    }
-                    if (numeroIntroducido == 2) {
-                        insertarValoresPatada(CALOR);
-                        partidaEnCurso.setClima(CALOR.getNombreClima());
-                    }
-                    if (numeroIntroducido == 3) {
-                        insertarValoresPatada(SOLEADO);
-                        partidaEnCurso.setClima(SOLEADO.getNombreClima());
-                    }
-                    if (numeroIntroducido > 3 && numeroIntroducido < 11) {
-                        insertarValoresPatada(PERFECTO);
-                        partidaEnCurso.setClima(PERFECTO.getNombreClima());
-                    }
-                    if (numeroIntroducido == 11) {
-                        insertarValoresPatada(LLUVIOSO);
-                        partidaEnCurso.setClima(LLUVIOSO.getNombreClima());
-                    }
-                    if (numeroIntroducido == 12) {
-                        insertarValoresPatada(VENTISCA);
-                        partidaEnCurso.setClima(VENTISCA.getNombreClima());
-                    }
-                } catch (Exception e) {
-                    Log.e("Exception", "File write failed: " + e.toString());
+        rollDices.setOnClickListener(view -> {
+            final Animation anim1 = AnimationUtils.loadAnimation(ClimaActivity.this, R.anim.shake);
+            final Animation anim2 = AnimationUtils.loadAnimation(ClimaActivity.this, R.anim.shake);
+            final Animation.AnimationListener animationListener = new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    contadorDado = 0;
                 }
 
-            }
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    int value = randomDiceValue();
+                    contadorDado +=  value;
+                    int res = getResources().getIdentifier("dado_" + value, "drawable", "com.example.miguel.bludbuwl");
 
-            @Override
-            public void afterTextChanged(Editable editable) {
+                    if (animation == anim1) {
+                        imageView1.setImageResource(res);
+                    } else if (animation == anim2) {
+                        imageView2.setImageResource(res);
+                    }
 
-            }
+                    findViewById(nombre_clima).setVisibility(VISIBLE);
+                    findViewById(descripcion_clima).setVisibility(VISIBLE);
+                    findViewById(boton_continuar_clima).setVisibility(VISIBLE);
+                    findViewById(R.id.tirar_dados).setVisibility(INVISIBLE);
+                    try {
+                        if (contadorDado == 2) {
+                            insertarValoresPatada(CALOR);
+                            partidaEnCurso.setClima(CALOR.getNombreClima());
+                        }
+                        if (contadorDado == 3) {
+                            insertarValoresPatada(SOLEADO);
+                            partidaEnCurso.setClima(SOLEADO.getNombreClima());
+                        }
+                        if (contadorDado > 3 && contadorDado < 11) {
+                            insertarValoresPatada(PERFECTO);
+                            partidaEnCurso.setClima(PERFECTO.getNombreClima());
+                        }
+                        if (contadorDado == 11) {
+                            insertarValoresPatada(LLUVIOSO);
+                            partidaEnCurso.setClima(LLUVIOSO.getNombreClima());
+                        }
+                        if (contadorDado == 12) {
+                            insertarValoresPatada(VENTISCA);
+                            partidaEnCurso.setClima(VENTISCA.getNombreClima());
+                        }
+                    } catch (Exception e) {
+                        Log.e("Exception", "File write failed: " + e.toString());
+                    }
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            };
+
+            anim1.setAnimationListener(animationListener);
+            anim2.setAnimationListener(animationListener);
+
+            imageView1.startAnimation(anim1);
+            imageView2.startAnimation(anim2);
+
         });
+
+
     }
 
+    public static int randomDiceValue() {
+        return RANDOM.nextInt(6) + 1;
+    }
     public void abrirTiradaHinchas(View view) {
         Intent i = new Intent(this, PatadaInicialActivity.class);
         i.putExtra("partida", partidaEnCurso);

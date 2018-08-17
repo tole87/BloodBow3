@@ -28,4 +28,13 @@ public class Enanos extends Equipo {
         }
         return jugadores;
     }
+
+    @Override
+    public Jugador obtenerJugadorPorPosicion(String posicion){
+        return getJugadores()
+                .stream()
+                .filter(jugador -> jugador.getPosicion().equalsIgnoreCase(posicion))
+                .findFirst()
+                .get();
+    }
 }

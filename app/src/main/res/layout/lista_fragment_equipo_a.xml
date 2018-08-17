@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/posicion"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        tools:text="linea" />
+
+    <TextView
+        android:id="@+id/movimiento"
+        style="@style/Text_View_Roster_inicial"
+        tools:text="6" />
+
+    <TextView
+        android:id="@+id/fuerza"
+        style="@style/Text_View_Roster_inicial"
+        tools:text="6" />
+
+    <TextView
+        android:id="@+id/agilidad"
+        style="@style/Text_View_Roster_inicial"
+        tools:text="6" />
+
+    <TextView
+        android:id="@+id/armadura"
+        style="@style/Text_View_Roster_inicial"
+        tools:text="6" />
+
+    <Button
+        android:id="@+id/icono_habilidades"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:background="@drawable/icono_habilidades" />
+
+</LinearLayout>

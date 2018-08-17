@@ -18,11 +18,11 @@ import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.*;
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.borrarAlineacion;
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.leerArchivo;
+import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.obtenerAlineaciones;
 
 public class MostrarAlineacionesActivity extends AppCompatActivity {
 
@@ -51,7 +51,6 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
         private class ViewHolder {
             ImageView tV1;
             TextView tV2;
-            Button tV3;
         }
 
         public MostrarAlineacionesAdapter(Context context, List<Alineacion> alineaciones) {
@@ -72,7 +71,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
             } else
                 viewHolder = (ViewHolder) convertView.getTag();
 
-            Alineacion alineacion = (Alineacion) this.getItem(position);
+            Alineacion alineacion = this.getItem(position);
 
             viewHolder.tV1.setImageResource(alineacion.getIconoEquipo());
             viewHolder.tV2.setText(alineacion.getNombreEquipo());
@@ -112,9 +111,6 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
 
             });
             return convertView;
-//            AlineacionesUtilidades.borrarAlineacion(entry.getKey(), MostrarAlineacionesActivity.this);
-//                        finish();
-//                        startActivity(getIntent());
 
         }
     }

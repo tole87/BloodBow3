@@ -77,9 +77,9 @@ public class GestionPartido extends AppCompatActivity {
             switch (position) {
                 case 0:
                     FragmentEquipoA equipoA = new FragmentEquipoA();
-                    Bundle args = new Bundle();
-                    args.putString("equipo", partidaEnCurso.getEquipoA());
-                    equipoA.setArguments(args);
+                    Bundle argsEquipoA = new Bundle();
+                    argsEquipoA.putString("equipo", partidaEnCurso.getEquipoA());
+                    equipoA.setArguments(argsEquipoA);
                     return equipoA;
 
                 case 1:
@@ -87,6 +87,9 @@ public class GestionPartido extends AppCompatActivity {
                     return partido;
                 case 2:
                     FragmentEquipoB equipoB = new FragmentEquipoB();
+                    Bundle argsEquipoB = new Bundle();
+                    argsEquipoB.putString("equipo", partidaEnCurso.getEquipoB());
+                    equipoB.setArguments(argsEquipoB);
                     return equipoB;
                 default:
                     return null;
