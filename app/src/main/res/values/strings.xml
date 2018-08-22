@@ -39,6 +39,10 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_gestor_partida">GestorPartida</string>
 
+    <!-- TODO: bORRAR ESTOS QUE SON DE LA MONEDA QUE COPIE DE OTRA APLICACION -->
+    <string name="new_highscore">New Highscore !!!</string>
+    <string name="heads_first_letter">H</string>
+    <string name="tails_first_letter">T</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

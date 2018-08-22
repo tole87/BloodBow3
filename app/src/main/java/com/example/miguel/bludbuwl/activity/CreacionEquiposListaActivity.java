@@ -41,8 +41,8 @@ public class CreacionEquiposListaActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Equipo equipo = (Equipo) adapterView.getItemAtPosition(i);
-                Intent intent = new  Intent(getApplicationContext(),RosterInicialActivity.class);
-                intent.putExtra("equipo",equipo);
+                Intent intent = new Intent(getApplicationContext(), RosterInicialActivity.class);
+                intent.putExtra("equipo", equipo);
                 startActivity(intent);
 
             }
@@ -76,7 +76,6 @@ public class CreacionEquiposListaActivity extends Activity {
             TextView nombreTextView = (TextView) listItemView.findViewById(R.id.nombre_equipo_seleccion);
 
             nombreTextView.setText(equipoActual.getNombre());
-
 
 
             return listItemView;

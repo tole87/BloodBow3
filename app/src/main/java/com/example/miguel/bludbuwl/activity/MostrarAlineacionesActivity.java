@@ -27,14 +27,13 @@ import static com.example.miguel.bludbuwl.activity.AlineacionesUtilidades.obtene
 public class MostrarAlineacionesActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipos_creados);
 
         leerArchivo(this);
-        MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this,new ArrayList<>(obtenerAlineaciones().values()));
+        MostrarAlineacionesAdapter itemsAdapter = new MostrarAlineacionesAdapter(this, new ArrayList<>(obtenerAlineaciones().values()));
 
         ListView listView = findViewById(R.id.lista_mostrar_alineaciones_guardadas);
 
@@ -45,8 +44,7 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
     }
 
 
-
-    public class MostrarAlineacionesAdapter extends ArrayAdapter <Alineacion>{
+    public class MostrarAlineacionesAdapter extends ArrayAdapter<Alineacion> {
 
         private class ViewHolder {
             ImageView tV1;
@@ -101,12 +99,9 @@ public class MostrarAlineacionesActivity extends AppCompatActivity {
                     }
 
 
-
-
                 });
 
                 popup.show();//showing popup menu
-
 
 
             });

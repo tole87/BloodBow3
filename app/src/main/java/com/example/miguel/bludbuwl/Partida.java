@@ -2,7 +2,7 @@ package com.example.miguel.bludbuwl;
 
 import java.io.Serializable;
 
-public class Partida implements Serializable{
+public class Partida implements Serializable {
 
     private String equipoA;
 
@@ -29,13 +29,14 @@ public class Partida implements Serializable{
         this.equipoB = equipoB;
     }
 
-    public void removeEquipoA(){
+    public void removeEquipoA() {
         this.equipoA = "";
     }
 
-    public void removeEquipoB(){
+    public void removeEquipoB() {
         this.equipoB = "";
     }
+
     public String getClima() {
         return clima;
     }
