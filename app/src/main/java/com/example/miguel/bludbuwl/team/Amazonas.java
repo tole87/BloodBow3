@@ -20,10 +20,10 @@ public class Amazonas extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Linea", 50000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre())),16));
-            jugadores.add(new Jugador("Receptor", 70000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.ATRAPAR.getNombre())),2));
-            jugadores.add(new Jugador("Lanzador", 70000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.PASAR.getNombre())),2));
-            jugadores.add(new Jugador("Blitzer", 90000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getNombre(), Habilidad.PLACAR.getNombre())),4));
+            jugadores.add(new Jugador("Linea", 50000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getId())),16));
+            jugadores.add(new Jugador("Receptor", 70000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getId(), Habilidad.ATRAPAR.getId())),2));
+            jugadores.add(new Jugador("Lanzador", 70000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getId(), Habilidad.PASAR.getId())),2));
+            jugadores.add(new Jugador("Blitzer", 90000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.ESQUIVAR.getId(), Habilidad.PLACAR.getId())),4));
         }
         return jugadores;
     }

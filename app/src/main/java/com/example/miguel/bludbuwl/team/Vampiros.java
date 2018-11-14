@@ -20,8 +20,8 @@ public class Vampiros extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Siervos", 40000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),16));
-            jugadores.add(new Jugador("Vampiros", 110000, 6, 4, 4, 8, new HashSet<>(Arrays.asList(Habilidad.SEDDESANGRE.getNombre(), Habilidad.MIRADAHIPNOTICA.getNombre(), Habilidad.REGENERACION.getNombre())),6));
+            jugadores.add(new Jugador("Siervos", 40000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getId())),16));
+            jugadores.add(new Jugador("Vampiros", 110000, 6, 4, 4, 8, new HashSet<>(Arrays.asList(Habilidad.SEDDESANGRE.getId(), Habilidad.MIRADAHIPNOTICA.getId(), Habilidad.REGENERACION.getId())),6));
 
         }
         return jugadores;

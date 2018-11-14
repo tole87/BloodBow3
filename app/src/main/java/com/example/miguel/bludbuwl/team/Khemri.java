@@ -20,10 +20,10 @@ public class Khemri extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Esqueletos", 40000, 5, 3, 2, 7, new HashSet<>(Arrays.asList(Habilidad.REGENERACION.getNombre(), Habilidad.CABEZADURA.getNombre())),16));
-            jugadores.add(new Jugador("Thro-Ras", 70000, 6, 3, 2, 7, new HashSet<>(Arrays.asList(Habilidad.PASAR.getNombre(), Habilidad.REGENERACION.getNombre(), Habilidad.MANOSSEGURAS.getNombre())),2));
-            jugadores.add(new Jugador("Blitz-Ras", 90000, 6, 3, 2, 8, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getNombre(), Habilidad.REGENERACION.getNombre())),2));
-            jugadores.add(new Jugador("Guardianes de la Tumba", 100000, 4, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.REGENERACION.getNombre(), Habilidad.DEGENERAR.getNombre())),4));
+            jugadores.add(new Jugador("Esqueletos", 40000, 5, 3, 2, 7, new HashSet<>(Arrays.asList(Habilidad.REGENERACION.getId(), Habilidad.CABEZADURA.getId())),16));
+            jugadores.add(new Jugador("Thro-Ras", 70000, 6, 3, 2, 7, new HashSet<>(Arrays.asList(Habilidad.PASAR.getId(), Habilidad.REGENERACION.getId(), Habilidad.MANOSSEGURAS.getId())),2));
+            jugadores.add(new Jugador("Blitz-Ras", 90000, 6, 3, 2, 8, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getId(), Habilidad.REGENERACION.getId())),2));
+            jugadores.add(new Jugador("Guardianes de la Tumba", 100000, 4, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.REGENERACION.getId(), Habilidad.DEGENERAR.getId())),4));
 
         }
         return jugadores;

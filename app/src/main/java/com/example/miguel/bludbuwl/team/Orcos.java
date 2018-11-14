@@ -20,12 +20,12 @@ public class Orcos extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Linea", 50000, 5, 3, 3, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),16));
-            jugadores.add(new Jugador("Goblin", 40000, 6, 2, 3, 7, new HashSet<>(Arrays.asList(Habilidad.AGILIDADFELINA.getNombre(), Habilidad.ESQUIVAR.getNombre(), Habilidad.ESCURRIDIZO.getNombre())),4));
-            jugadores.add(new Jugador("Lanzador", 70000, 5, 3, 3, 8, new HashSet<>(Arrays.asList(Habilidad.MANOSSEGURAS.getNombre(), Habilidad.PASAR.getNombre())),2));
-            jugadores.add(new Jugador("Defensa Orco Negro", 80000, 4, 4, 2, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),4));
-            jugadores.add(new Jugador("Blitzer", 80000, 6, 3, 3, 9, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getNombre())),4));
-            jugadores.add(new Jugador("Troll", 110000, 4, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.SIEMPREHAMBRIENTO.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.REALMENTEESTUPIDO.getNombre(), Habilidad.REGENERACION.getNombre(), Habilidad.LANZARCOMPAÑERO.getNombre())),1));
+            jugadores.add(new Jugador("Linea", 50000, 5, 3, 3, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getId())),16));
+            jugadores.add(new Jugador("Goblin", 40000, 6, 2, 3, 7, new HashSet<>(Arrays.asList(Habilidad.AGILIDADFELINA.getId(), Habilidad.ESQUIVAR.getId(), Habilidad.ESCURRIDIZO.getId())),4));
+            jugadores.add(new Jugador("Lanzador", 70000, 5, 3, 3, 8, new HashSet<>(Arrays.asList(Habilidad.MANOSSEGURAS.getId(), Habilidad.PASAR.getId())),2));
+            jugadores.add(new Jugador("Defensa Orco Negro", 80000, 4, 4, 2, 9, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getId())),4));
+            jugadores.add(new Jugador("Blitzer", 80000, 6, 3, 3, 9, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getId())),4));
+            jugadores.add(new Jugador("Troll", 110000, 4, 5, 1, 9, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getId(), Habilidad.SIEMPREHAMBRIENTO.getId(), Habilidad.GOLPEMORTIFERO.getId(), Habilidad.REALMENTEESTUPIDO.getId(), Habilidad.REGENERACION.getId(), Habilidad.LANZARCOMPAÑERO.getId())),1));
 
         }
         return jugadores;

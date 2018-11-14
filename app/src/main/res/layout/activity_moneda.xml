@@ -6,100 +6,66 @@ android:layout_height="match_parent"
 android:background="@drawable/centro"
 tools:context=".moneda.MonedaActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hi-Score: "
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/highScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Score: "
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/hist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="Recibir o Defender"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/coin"
+        android:layout_width="165dp"
+        android:layout_height="164dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="107dp"
+        android:src="@drawable/heads" />
 
-<ImageView
-    android:id="@+id/coin"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:src="@drawable/heads" />
+    <TextView
+        android:id="@+id/equipo_comienza"
+        android:layout_width="344dp"
+        android:layout_height="112dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="154dp"
+        android:background="@color/lightgrey"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:gravity="center">
 
     <Button
-        android:id="@+id/heads"
-        android:layout_width="0dp"
+        android:id="@+id/lanzar_moneda"
+        android:layout_width="164dp"
         android:layout_height="wrap_content"
-
-        android:layout_margin="16dp"
+        android:layout_below="@+id/equipo_comienza"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-154dp"
         android:layout_weight="1"
         android:background="@color/lightgrey"
         android:onClick="flipCoin"
-
-        android:text="Heads" />
+        android:text="Lanzar Moneda" />
 
     <Button
-        android:id="@+id/tails"
-        android:layout_width="0dp"
+        android:id="@+id/ir_clima"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
         android:layout_weight="1"
         android:background="@color/lightgrey"
-        android:onClick="flipCoin"
-        android:text="Tails" />
-</LinearLayout>
+        android:onClick="abrirTiradaClima"
+        android:text="Continuar"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>

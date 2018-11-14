@@ -20,10 +20,10 @@ public class EnanosCaos extends Equipo {
     public HashSet<Jugador> getJugadores() {
         if (jugadores.isEmpty()) {
             //Aqui instancio jugadores
-            jugadores.add(new Jugador("Hobgoblins", 40000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getNombre())),16));
-            jugadores.add(new Jugador("Defensas Enanos del Caos", 70000, 4, 3, 2, 9, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getNombre(), Habilidad.PLACAJEDEFENSIVO.getNombre())),6));
-            jugadores.add(new Jugador("Centauros Toro", 130000, 6, 4, 2, 9, new HashSet<>(Arrays.asList(Habilidad.CARRERA.getNombre(), Habilidad.PIESFIRMES.getNombre(), Habilidad.CABEZADURA.getNombre())),2));
-            jugadores.add(new Jugador("Minotauro", 150000, 5, 5, 2, 8, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getNombre(), Habilidad.FURIA.getNombre(), Habilidad.CUERNOS.getNombre(), Habilidad.GOLPEMORTIFERO.getNombre(), Habilidad.CABEZADURA.getNombre(), Habilidad.ANIMALSALVAJE.getNombre())),1));
+            jugadores.add(new Jugador("Hobgoblins", 40000, 6, 3, 3, 7, new HashSet<>(Arrays.asList(Habilidad.NINGUNA.getId())),16));
+            jugadores.add(new Jugador("Defensas Enanos del Caos", 70000, 4, 3, 2, 9, new HashSet<>(Arrays.asList(Habilidad.PLACAR.getId(), Habilidad.PLACAJEDEFENSIVO.getId())),6));
+            jugadores.add(new Jugador("Centauros Toro", 130000, 6, 4, 2, 9, new HashSet<>(Arrays.asList(Habilidad.CARRERA.getId(), Habilidad.PIESFIRMES.getId(), Habilidad.CABEZADURA.getId())),2));
+            jugadores.add(new Jugador("Minotauro", 150000, 5, 5, 2, 8, new HashSet<>(Arrays.asList(Habilidad.SOLITARIO.getId(), Habilidad.FURIA.getId(), Habilidad.CUERNOS.getId(), Habilidad.GOLPEMORTIFERO.getId(), Habilidad.CABEZADURA.getId(), Habilidad.ANIMALSALVAJE.getId())),1));
         }
         return jugadores;
     }
