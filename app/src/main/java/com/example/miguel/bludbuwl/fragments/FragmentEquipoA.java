@@ -151,7 +151,9 @@ public class FragmentEquipoA extends Fragment {
             String habilidad = this.getItem(position);
 
             viewHolder.tV1.setText(Habilidad.valueOf(habilidad).getNombre());
+            viewHolder.tV1.setBackgroundColor(Color.LTGRAY);
             viewHolder.tV2.setText(Habilidad.valueOf(habilidad).getDescripcion());
+            viewHolder.tV2.setBackgroundColor(Color.WHITE);
 
             return listItemView;
         }
