@@ -121,7 +121,7 @@ public class ClimaActivity extends AppCompatActivity {
         return RANDOM.nextInt(6) + 1;
     }
 
-    public void abrirTiradaHinchas(View view) {
+    public void abrirPatadaInicial(View view) {
         Intent i = new Intent(this, PatadaInicialActivity.class);
         i.putExtra("partida", partidaEnCurso);
         startActivity(i);

@@ -84,6 +84,9 @@ public class GestionPartido extends AppCompatActivity {
 
                 case 1:
                     FragmentPartido partido = new FragmentPartido();
+                    Bundle argsPartido = new Bundle();
+                    argsPartido.putSerializable("partida", partidaEnCurso);
+                    partido.setArguments(argsPartido);
                     return partido;
                 case 2:
                     FragmentEquipoB equipoB = new FragmentEquipoB();

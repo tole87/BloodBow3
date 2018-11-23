@@ -4,14 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/centro"
     tools:context="com.example.miguel.bludbuwl.activity.GestionPartido">
+
+    <TextView
+        android:id="@+id/marcador_equipo_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="98dp"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/marcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignStart="@+id/marcador_equipo_a"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="504dp"
+        android:text="Marcador"
+        android:textColor="@android:color/black"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/marcador_equipo_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/marcador_equipo_a"
+        android:layout_marginStart="54dp"
+        android:layout_toEndOf="@+id/marcador_equipo_a"
+        android:textColor="@android:color/black"
+        android:text="0"
+        android:textSize="60sp" />
+
+
+    <Button
+        android:id="@+id/gol_equipo_a"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginBottom="454dp"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/gol_equipo_b"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="54dp"
+        android:layout_toEndOf="@+id/gol_equipo_a"
+        android:layout_alignTop="@+id/gol_equipo_a"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/resta_gol_equipo_a"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginBottom="358dp"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/resta_gol_equipo_b"
+        android:layout_width="34dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="54dp"
+        android:layout_toEndOf="@+id/resta_gol_equipo_a"
+        android:layout_alignTop="@+id/resta_gol_equipo_a"
+        android:text="-" />
 
     <TextView
         android:id="@+id/text_view_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="212dp"
         android:text="00:00"
         android:textColor="@android:color/black"
         android:textSize="60sp" />

@@ -86,7 +86,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Continuar"
-        android:onClick="abrirTiradaHinchas"
+        android:onClick="abrirPatadaInicial"
         android:visibility="invisible"/>
 
 

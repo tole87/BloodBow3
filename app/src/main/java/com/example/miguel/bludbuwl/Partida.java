@@ -5,13 +5,15 @@ import java.io.Serializable;
 public class Partida implements Serializable {
 
     private String equipoA;
-
     private String equipoB;
     private String clima;
     private String patadaInicial;
+    private int scoreA;
+    private int scoreB;
 
     public Partida() {
     }
+
 
     public String getEquipoA() {
         return equipoA;
@@ -51,5 +53,34 @@ public class Partida implements Serializable {
 
     public void setPatadaInicial(String patadaInicial) {
         this.patadaInicial = patadaInicial;
+    }
+
+    public int getScoreA() {
+        return scoreA;
+    }
+
+    public void sumaGolA() {
+        this.scoreA = scoreA+1;
+    }
+    public void sumaGolB() {
+        this.scoreB = scoreB+1;
+    }
+
+    public void restaGolA() {
+        if(scoreA>0){
+        this.scoreA = scoreA-1;}
+    }
+    public void restaGolB() {
+        if(scoreB>0){
+        this.scoreB = scoreB-1;}
+    }
+
+
+    public int getScoreB() {
+        return scoreB;
+    }
+
+    public void setScoreB(int scoreB) {
+        this.scoreB = scoreB;
     }
 }

@@ -13,17 +13,16 @@
         android:orientation="vertical">
         <TextView
             android:id="@+id/nombre_habilidad"
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="nombre_Habilidad"
-            android:background="@drawable/border_habilidades"
+
             />
         <TextView
             android:id="@+id/descripcion_habilidad"
-            android:layout_width="310dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="nombre_Equipo"
-            android:background="@drawable/border_habilidades"/>
+            tools:text="nombre_Equipo"/>
 
     </LinearLayout>
 
