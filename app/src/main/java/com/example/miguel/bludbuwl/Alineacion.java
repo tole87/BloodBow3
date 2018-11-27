@@ -68,6 +68,7 @@ public class Alineacion {
         return medico;
     }
 
+
     public void setMedico(boolean medico) {
         this.medico = medico;
     }

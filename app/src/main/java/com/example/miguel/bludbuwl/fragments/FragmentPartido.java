@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
+import com.example.miguel.bludbuwl.activity.GestionPartido;
 
 import java.util.Locale;
 
@@ -23,7 +23,6 @@ public class FragmentPartido extends Fragment {
 
     private static final long START_TIME_IN_MILLIS = 210000;
 
-    Partida partidaEnCurso;
     private TextView marcadorEquipoATextView;
     private Button sumaGolEquipoAButton;
     private TextView marcadorEquipoBTextView;
@@ -45,10 +44,7 @@ public class FragmentPartido extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         View partidoView = inflater.inflate(R.layout.partido_en_curso, viewGroup, false);
 
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            partidaEnCurso = (Partida) bundle.getSerializable("partida");
-        }
+
 
         cronometroTextView = partidoView.findViewById(R.id.text_view_countdown);
         startPauseButton = partidoView.findViewById(R.id.button_start_pause);
@@ -60,53 +56,33 @@ public class FragmentPartido extends Fragment {
         restaGolEquipoAButton = partidoView.findViewById(R.id.resta_gol_equipo_a);
         restaGolEquipoBButton = partidoView.findViewById(R.id.resta_gol_equipo_b);
 
-        sumaGolEquipoAButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                partidaEnCurso.sumaGolA();
-                marcadorEquipoATextView.setText(String.valueOf(partidaEnCurso.getScoreA()));
-            }
+        sumaGolEquipoAButton.setOnClickListener(v -> {
+            GestionPartido.partidaEnCurso.sumaGolA();
+            marcadorEquipoATextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getScoreA()));
         });
-        sumaGolEquipoBButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                partidaEnCurso.sumaGolB();
-                marcadorEquipoBTextView.setText(String.valueOf(partidaEnCurso.getScoreB()));
+        sumaGolEquipoBButton.setOnClickListener(v -> {
+            GestionPartido.partidaEnCurso.sumaGolB();
+            marcadorEquipoBTextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getScoreB()));
+        });
+
+        restaGolEquipoAButton.setOnClickListener(v -> {
+            GestionPartido.partidaEnCurso.restaGolA();
+            marcadorEquipoATextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getScoreA()));
+        });
+        restaGolEquipoBButton.setOnClickListener(v -> {
+            GestionPartido.partidaEnCurso.restaGolB();
+            marcadorEquipoBTextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getScoreB()));
+        });
+
+        startPauseButton.setOnClickListener(v -> {
+            if (isTimerRunning) {
+                pauseTimer();
+            } else {
+                startTimer();
             }
         });
 
-        restaGolEquipoAButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                partidaEnCurso.restaGolA();
-                marcadorEquipoATextView.setText(String.valueOf(partidaEnCurso.getScoreA()));
-            }
-        });
-        restaGolEquipoBButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                partidaEnCurso.restaGolB();
-                marcadorEquipoBTextView.setText(String.valueOf(partidaEnCurso.getScoreB()));
-            }
-        });
-
-        startPauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isTimerRunning) {
-                    pauseTimer();
-                } else {
-                    startTimer();
-                }
-            }
-        });
-
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetTimer();
-            }
-        });
+        resetButton.setOnClickListener(v -> resetTimer());
 
         updateCountDownText();
         return partidoView;

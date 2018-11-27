@@ -10,10 +10,29 @@ public class Partida implements Serializable {
     private String patadaInicial;
     private int scoreA;
     private int scoreB;
+    private int reRollsA;
+    private int reRollsB;
+
 
     public Partida() {
     }
 
+    public int getReRollsB() {
+        return reRollsB;
+    }
+
+    public void setReRollsB(int reRollsB) {
+        this.reRollsB = reRollsB;
+    }
+
+    public int getReRollsA() {
+
+        return reRollsA;
+    }
+
+    public void setReRollsA(int reRollsA) {
+        this.reRollsA = reRollsA;
+    }
 
     public String getEquipoA() {
         return equipoA;

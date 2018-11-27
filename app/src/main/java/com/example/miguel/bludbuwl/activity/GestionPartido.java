@@ -17,13 +17,16 @@ import com.example.miguel.bludbuwl.fragments.FragmentPartido;
 
 public class GestionPartido extends AppCompatActivity {
 
-    static Partida partidaEnCurso;
+    public static Partida partidaEnCurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         partidaEnCurso = (Partida) getIntent().getSerializableExtra("partida");
+
+        partidaEnCurso.setReRollsA(AlineacionesUtilidades.obtenerAlineacionPorNombre(partidaEnCurso.getEquipoA()).getReRolls());
+        partidaEnCurso.setReRollsB(AlineacionesUtilidades.obtenerAlineacionPorNombre(partidaEnCurso.getEquipoB()).getReRolls());
         setContentView(R.layout.gestion_partido);
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -74,29 +77,22 @@ public class GestionPartido extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            Fragment fragment = null;
             switch (position) {
                 case 0:
-                    FragmentEquipoA equipoA = new FragmentEquipoA();
-                    Bundle argsEquipoA = new Bundle();
-                    argsEquipoA.putString("equipo", partidaEnCurso.getEquipoA());
-                    equipoA.setArguments(argsEquipoA);
-                    return equipoA;
-
+                    fragment = new FragmentEquipoA();
+                    return fragment;
                 case 1:
-                    FragmentPartido partido = new FragmentPartido();
-                    Bundle argsPartido = new Bundle();
-                    argsPartido.putSerializable("partida", partidaEnCurso);
-                    partido.setArguments(argsPartido);
-                    return partido;
+                    fragment = new FragmentPartido();
+                    return fragment;
                 case 2:
-                    FragmentEquipoB equipoB = new FragmentEquipoB();
-                    Bundle argsEquipoB = new Bundle();
-                    argsEquipoB.putString("equipo", partidaEnCurso.getEquipoB());
-                    equipoB.setArguments(argsEquipoB);
-                    return equipoB;
+                    fragment = new FragmentEquipoB();
+                    return fragment;
+
                 default:
                     return null;
             }
+
         }
     }
 }

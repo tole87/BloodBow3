@@ -68,6 +68,113 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="NestedScrolling" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Re-Rolls" />
+
+                <TextView
+                    android:id="@+id/contador_reroll"
+                    style="@style/Text_View_Roster_inicial"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/resta_reroll"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="40dp"
+                    android:text="-" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Medico" />
+
+                <TextView
+                    android:id="@+id/contador_medico"
+                    style="@style/Text_View_Roster_inicial"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Factor de hinchas" />
+
+                <TextView
+                    android:id="@+id/contador_hincha"
+                    style="@style/Text_View_Roster_inicial"
+                    android:text="0"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Animadora" />
+
+                <TextView
+                    android:id="@+id/contador_animadora"
+                    style="@style/Text_View_Roster_inicial"
+                    android:text="0"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Ayudante entrenador" />
+
+
+                <TextView
+                    android:id="@+id/contador_ayudante"
+                    style="@style/Text_View_Roster_inicial"
+                    android:text="0"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>

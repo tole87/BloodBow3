@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.R;
 import com.example.miguel.bludbuwl.activity.AlineacionesUtilidades;
+import com.example.miguel.bludbuwl.activity.GestionPartido;
 import com.example.miguel.bludbuwl.player.Habilidad;
 import com.example.miguel.bludbuwl.player.Jugador;
 
@@ -32,10 +33,16 @@ import java.util.List;
 public class FragmentEquipoB extends Fragment {
 
     Dialog myDialog;
+    private TextView rerollTextView;
+    private TextView medicoTextView;
+    private TextView hinchasTextView;
+    private TextView animadoraTextView;
+    private TextView ayudanteTextView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
         myDialog = new Dialog(this.getContext());
-        Alineacion alineacionEquipoB = AlineacionesUtilidades.obtenerAlineacionPorNombre(getArguments().getString("equipo"));
+        Alineacion alineacionEquipoB = AlineacionesUtilidades.obtenerAlineacionPorNombre(GestionPartido.partidaEnCurso.getEquipoB());
         View equipoBView = inflater.inflate(R.layout.fragment_equipo_b, viewGroup, false);
 
         LinkedHashMap<Jugador, Integer> jugadoresLista = alineacionEquipoB.obtenerJugadoresCompletos();
@@ -46,7 +53,30 @@ public class FragmentEquipoB extends Fragment {
         listView.setAdapter(itemsAdapter);
         setListViewHeightBasedOnChildren(listView);
 
+        rerollTextView = equipoBView.findViewById(R.id.contador_reroll);
+        rerollTextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getReRollsB()));
+        medicoTextView = equipoBView.findViewById(R.id.contador_medico);
+        if(alineacionEquipoB.isMedico()){medicoTextView.setText("1");}
+        hinchasTextView = equipoBView.findViewById(R.id.contador_hincha);
+        hinchasTextView.setText(String.valueOf(alineacionEquipoB.getFactorHinchas()));
+        animadoraTextView = equipoBView.findViewById(R.id.contador_animadora);
+        animadoraTextView.setText(String.valueOf(alineacionEquipoB.getAnimadoras()));
+        ayudanteTextView = equipoBView.findViewById(R.id.contador_ayudante);
+        ayudanteTextView.setText(String.valueOf(alineacionEquipoB.getAyudanteEntrenador()));
+
+        equipoBView.findViewById(R.id.resta_reroll).setOnClickListener((View v) -> {
+            restaReroll(rerollTextView);
+        });
+
         return equipoBView;
+
+    }
+
+    private void restaReroll(TextView rerollTextView){
+        if(GestionPartido.partidaEnCurso.getReRollsB()>0){
+            GestionPartido.partidaEnCurso.setReRollsB(GestionPartido.partidaEnCurso.getReRollsB()-1);
+            rerollTextView.setText(String.valueOf(GestionPartido.partidaEnCurso.getReRollsB()));
+        }
 
     }
 
