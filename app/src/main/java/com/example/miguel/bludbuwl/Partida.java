@@ -8,6 +8,8 @@ public class Partida implements Serializable {
     private String equipoB;
     private String clima;
     private String patadaInicial;
+    private int minutos;
+    private int segundos;
     private int scoreA;
     private int scoreB;
     private int reRollsA;
@@ -15,6 +17,34 @@ public class Partida implements Serializable {
 
 
     public Partida() {
+    }
+
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public void sumaMinuto() {
+        this.minutos = minutos + 1;
+    }
+
+    public void restaMinuto() {
+        if (minutos >= 1) {
+            this.minutos = minutos - 1;
+        }
+    }
+
+    public int getSegundos() {
+        return segundos;
+    }
+
+    public void sumaSegundo() {
+        this.segundos = segundos + 10;
+    }
+
+    public void restaSegundo() {
+        if (segundos >= 10) {
+            this.segundos = segundos - 10;
+        }
     }
 
     public int getReRollsB() {
@@ -79,19 +109,23 @@ public class Partida implements Serializable {
     }
 
     public void sumaGolA() {
-        this.scoreA = scoreA+1;
+        this.scoreA = scoreA + 1;
     }
+
     public void sumaGolB() {
-        this.scoreB = scoreB+1;
+        this.scoreB = scoreB + 1;
     }
 
     public void restaGolA() {
-        if(scoreA>0){
-        this.scoreA = scoreA-1;}
+        if (scoreA > 0) {
+            this.scoreA = scoreA - 1;
+        }
     }
+
     public void restaGolB() {
-        if(scoreB>0){
-        this.scoreB = scoreB-1;}
+        if (scoreB > 0) {
+            this.scoreB = scoreB - 1;
+        }
     }
 
 

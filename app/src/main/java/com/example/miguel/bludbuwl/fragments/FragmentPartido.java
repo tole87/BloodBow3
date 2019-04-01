@@ -23,6 +23,7 @@ public class FragmentPartido extends Fragment {
 
     private static final long START_TIME_IN_MILLIS = 210000;
 
+
     private TextView marcadorEquipoATextView;
     private Button sumaGolEquipoAButton;
     private TextView marcadorEquipoBTextView;
@@ -37,7 +38,9 @@ public class FragmentPartido extends Fragment {
 
     private boolean isTimerRunning;
 
-    private long timeLeftInMillis = START_TIME_IN_MILLIS;
+//    private long timeLeftInMillis = START_TIME_IN_MILLIS;
+    private long timeLeftInMillis = (GestionPartido.partidaEnCurso.getMinutos()*60000)+(GestionPartido.partidaEnCurso.getSegundos()*1000);
+
     private MediaPlayer mp;
 
     @Override

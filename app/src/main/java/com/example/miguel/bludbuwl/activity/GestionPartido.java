@@ -38,6 +38,7 @@ public class GestionPartido extends AppCompatActivity {
         final ViewPager viewPager = findViewById(R.id.view_pager);
         GestionPartidoTabsAdapter tabsAdapter = new GestionPartidoTabsAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabsAdapter);
+        viewPager.setCurrentItem(1);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -57,9 +58,6 @@ public class GestionPartido extends AppCompatActivity {
         });
     }
 
-    /**
-     * Created by tutlane on 19-12-2017.
-     */
 
     public static class GestionPartidoTabsAdapter extends FragmentStatePagerAdapter {
         int mNumOfTabs;

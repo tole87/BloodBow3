@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.example.miguel.bludbuwl.Alineacion;
 import com.example.miguel.bludbuwl.Partida;
 import com.example.miguel.bludbuwl.R;
-import com.example.miguel.bludbuwl.moneda.MonedaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +90,7 @@ public class EleccionEquiposPartidaActivity extends AppCompatActivity {
 
     public void botonComenzar(View view) {
         if (!((TextView) findViewById(R.id.nombre_equipoA)).getText().equals("") && !((TextView) findViewById(R.id.nombre_equipoB)).getText().equals("")) {
-            Intent intent = new Intent(getApplicationContext(), MonedaActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SeleccionarCronometro.class);
             intent.putExtra("partida", partidaEnCurso);
             startActivity(intent);
         } else {

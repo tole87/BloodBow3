@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/centro"
+    tools:context=".activity.SeleccionarCronometro">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="Duracion de cada turno"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="98dp"
+            android:text="Minutos"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="98dp"
+            android:text="Segundos"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/suma_minuto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="150dp"
+            android:src="@drawable/flecha_arriba"
+            android:onClick="sumaMinutos"
+            android:clickable="true"/>
+
+        <ImageView
+            android:id="@+id/suma_segundo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/flecha_arriba"
+            android:onClick="sumaSegundos"
+            android:clickable="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/minutos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="98dp"
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/segundos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="98dp"
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/resta_minuto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="150dp"
+            android:src="@drawable/flecha_abajo"
+            android:onClick="restaMinutos"
+            android:clickable="true"/>
+
+        <ImageView
+            android:id="@+id/resta_segundo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/flecha_abajo"
+            android:onClick="restaSegundos"
+            android:clickable="true"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/siguiente_cronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="60dp"
+        android:layout_alignParentBottom="true"
+        android:onClick="botonSiguienteMoneda"
+        android:text="Siguiente" />
+</RelativeLayout>

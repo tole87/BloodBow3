@@ -35,9 +35,9 @@
             android:screenOrientation="landscape" />
         <activity android:name=".activity.MostrarAlineacionesActivity" />
         <activity android:name=".activity.ClimaActivity" />
-        <activity android:name=".activity.HinchasActivity" />
         <activity android:name=".activity.EleccionEquiposPartidaActivity" />
         <activity android:name=".activity.PatadaInicialActivity" />
+        <activity android:name=".activity.SeleccionarCronometro" />
         <activity
             android:name=".activity.GestionPartido"
             android:theme="@style/AppTheme.NoActionBar" />
